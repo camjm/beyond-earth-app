@@ -19,18 +19,18 @@
 ## Architecture Components
 Tools to help implement the web service after the high-level design.
 
-### Data Access & Object Persistence
+#### Data Access & Object Persistence
 Uses **NHibernate** as the Object Relational Mapper (ORM), which supports the Unit of Work patterion (*ISession*).
 
-### Type Mapper
+#### Type Mapper
 Uses **AutoMapper** to map the data between objects (the REST resource types and the persistent domain data model).
 
-### IoC Container
+#### IoC Container
 Uses the **Ninject** container to manage dependencies by implementing ASP.NET *IDependencyResolver*.
 
-### Logger
+#### Logger
 Uses the **log4net** framework. Loggers can be used with IoC containers.
 
-### Testing Framework
+#### Testing Framework
 Uses the **NUnit** framework because it is simple, has a full-featured *Assert* class, and fluent interface.
 Uses **Moq** for the test mocking framework.
