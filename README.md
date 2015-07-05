@@ -15,3 +15,22 @@
 |BeyondEarthApp.Web.Api.Models |Class Library |Contains the REST API **Resources Model** (the 'types').|
 |BeyondEarthApp.Web.Common |Class Library |Contains functionality common to web and service applications.|
 |BeyondEarthAppDb |SQL Server Database Project |Contains the SQL Server **Database** (schema, code, data, etc). The output of this project is to publish the database to the specified target (new or existing database).|
+
+## Architecture Components
+Tools to help implement the web service after the high-level design.
+
+### Data Access & Object Persistence
+Uses **NHibernate** as the Object Relational Mapper (ORM), which supports the Unit of Work patterion (*ISession*).
+
+### Type Mapper
+Uses **AutoMapper** to map the data between objects (the REST resource types and the persistent domain data model).
+
+### IoC Container
+Uses the **Ninject** container to manage dependencies by implementing ASP.NET *IDependencyResolver*.
+
+### Logger
+Uses the **log4net** framework. Loggers can be used with IoC containers.
+
+### Testing Framework
+Uses the **NUnit** framework because it is simple, has a full-featured *Assert* class, and fluent interface.
+Uses **Moq** for the test mocking framework.
