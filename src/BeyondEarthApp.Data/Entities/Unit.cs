@@ -8,7 +8,7 @@
 
         public virtual int Cost { get; set; }
 
-        public virtual int Strength { get; set; }
+        public virtual short Strength { get; set; }
 
         public virtual Technology Technology { get; set; }
 
