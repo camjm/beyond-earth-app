@@ -57,5 +57,20 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Scripts" />
+    <Folder Include="Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\TechnologyData.sql" />
+    <None Include="Scripts\BuildingData.sql" />
+    <None Include="Scripts\UnitData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Technology.sql" />
+    <Build Include="Tables\Building.sql" />
+    <Build Include="Tables\Unit.sql" />
   </ItemGroup>
 </Project>
