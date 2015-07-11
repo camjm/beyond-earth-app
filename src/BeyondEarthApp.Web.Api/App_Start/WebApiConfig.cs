@@ -14,7 +14,7 @@ namespace BeyondEarthApp.Web.Api
             var constraintResolver = new DefaultInlineConstraintResolver();
             constraintResolver.ConstraintMap.Add("apiVersionConstraint", typeof(ApiVersionConstraint));
 
-            config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes(constraintResolver);
 
             config.Services.Replace(typeof(IHttpControllerSelector), new NamespaceHttpControllerSelector(config));
             //config.Services.Replace(typeof(ITraceWriter), null);
