@@ -2,7 +2,7 @@
 {
     public class Unit : IVersionedEntity
     {
-        public virtual int UnitId { get; set; }
+        public virtual long UnitId { get; set; }
 
         public virtual string Name { get; set; }
 

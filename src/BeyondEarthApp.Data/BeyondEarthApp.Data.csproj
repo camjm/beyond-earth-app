@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Building.cs" />
+    <Compile Include="Entities\IVersionedEntity.cs" />
     <Compile Include="Entities\Technology.cs" />
     <Compile Include="Entities\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

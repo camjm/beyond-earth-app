@@ -14,11 +14,13 @@ namespace BeyondEarthApp.Data.Entities
 
         public virtual int Cost { get; set; }
 
+        // getter only to prevent developer from replacing the entire collection
         public virtual IList<Building> Buildings
         {
             get { return _buildings; }
         }
 
+        // getter only to prevent developer from replacing the entire collection
         public virtual IList<Unit> Units
         {
             get { return _units; }
