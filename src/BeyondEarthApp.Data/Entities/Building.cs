@@ -1,6 +1,6 @@
 ﻿namespace BeyondEarthApp.Data.Entities
 {
-    public class Building
+    public class Building : IVersionedEntity
     {
         public virtual long BuildingId { get; set; }
 

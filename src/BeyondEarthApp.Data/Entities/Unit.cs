@@ -1,6 +1,6 @@
 ﻿namespace BeyondEarthApp.Data.Entities
 {
-    public class Unit
+    public class Unit : IVersionedEntity
     {
         public virtual int UnitId { get; set; }
 

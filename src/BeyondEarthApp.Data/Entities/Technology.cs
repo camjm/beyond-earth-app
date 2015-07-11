@@ -2,7 +2,7 @@
 
 namespace BeyondEarthApp.Data.Entities
 {
-    public class Technology
+    public class Technology : IVersionedEntity
     {
         private readonly IList<Building> _buildings = new List<Building>();
 
