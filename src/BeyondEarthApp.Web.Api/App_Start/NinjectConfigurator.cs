@@ -1,7 +1,14 @@
 ﻿using BeyondEarthApp.Common;
 using BeyondEarthApp.Common.Logging;
+using BeyondEarthApp.Data.SqlServer.Mapping;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using log4net.Config;
+using NHibernate;
+using NHibernate.Context;
 using Ninject;
+using Ninject.Activation;
+using Ninject.Web.Common;
 
 namespace BeyondEarthApp.Web.Api
 {
@@ -41,7 +48,34 @@ namespace BeyondEarthApp.Web.Api
 
         private void ConfigureNHibernate(IKernel container)
         {
-            //TODO
+            var sessionFactory = Fluently.Configure()
+                .Database(
+                    MsSqlConfiguration.MsSql2008.ConnectionString(c =>                  // SQL Server version compatible with 2012
+                        c.FromConnectionStringWithKey("BeyondEarthAppDb")))             // Load connection string from web.config
+                .CurrentSessionContext("web")                                           // Session management: one database session per web request
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<TechnologyMap>())     // Mappings assembly
+                .BuildSessionFactory();                                                 // Create configured ISessionFactoryInstance
+
+            // Only ever create a single ISessionFactory instance per application
+            container
+                .Bind<ISessionFactory>()
+                .ToConstant(sessionFactory);
+            container
+                .Bind<ISession>()
+                .ToMethod(CreateSession)
+                .InRequestScope();
+        }
+
+        private ISession CreateSession(IContext context)
+        {
+            var sessionFactory = context.Kernel.Get<ISessionFactory>();
+            if (!CurrentSessionContext.HasBind(sessionFactory))
+            {
+                var session = sessionFactory.OpenSession();
+                CurrentSessionContext.Bind(session);
+            }
+
+            return sessionFactory.GetCurrentSession();
         }
 
         private void ConfigureLog4net(IKernel container)
