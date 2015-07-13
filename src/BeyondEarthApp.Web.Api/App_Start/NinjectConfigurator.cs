@@ -1,6 +1,7 @@
 ﻿using BeyondEarthApp.Common;
 using BeyondEarthApp.Common.Logging;
 using BeyondEarthApp.Data.SqlServer.Mapping;
+using BeyondEarthApp.Web.Common;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using log4net.Config;
@@ -65,6 +66,11 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<ISession>()
                 .ToMethod(CreateSession)
+                .InRequestScope();
+
+            container
+                .Bind<IActionTransactionHelper>()
+                .To<ActionTransactionHelper>()
                 .InRequestScope();
         }
 
