@@ -60,6 +60,8 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<ISessionFactory>()
                 .ToConstant(sessionFactory);
+
+            // Only ever create a single ISession instance per request
             container
                 .Bind<ISession>()
                 .ToMethod(CreateSession)
