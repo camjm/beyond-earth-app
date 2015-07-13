@@ -70,10 +70,12 @@ namespace BeyondEarthApp.Web.Api
 
         private ISession CreateSession(IContext context)
         {
+            // CurrentSessionContext binds to underlying ASP.NET's HttpContext (see .CurrentSessionContext("web") above) which will manage ISession instances
+            // Each new web request will have a different HttpContext and open instance of ISession
             var sessionFactory = context.Kernel.Get<ISessionFactory>();
             if (!CurrentSessionContext.HasBind(sessionFactory))
             {
-                var session = sessionFactory.OpenSession();
+                var session = sessionFactory.OpenSession(); // Open connection to database
                 CurrentSessionContext.Bind(session);
             }
 
