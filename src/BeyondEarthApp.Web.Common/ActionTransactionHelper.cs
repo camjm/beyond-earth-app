@@ -38,6 +38,7 @@ namespace BeyondEarthApp.Web.Common
 
             if (filterContext.Exception == null)
             {
+                // write all in-memory model changes to the database
                 session.Flush();
                 session.Transaction.Commit();
             }
