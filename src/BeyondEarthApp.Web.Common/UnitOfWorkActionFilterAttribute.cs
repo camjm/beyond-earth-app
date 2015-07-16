@@ -5,7 +5,7 @@ namespace BeyondEarthApp.Web.Common
 {
     /// <summary>
     /// Handles disposal of ISession. Actions can get an open ISession with dependency injection.
-    /// Wraps all request database operations within a single transaction by default.
+    /// Wraps all database operations in the controller action within a single transaction by default.
     /// </summary>
     public class UnitOfWorkActionFilterAttribute : ActionFilterAttribute
     {
