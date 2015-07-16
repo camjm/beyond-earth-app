@@ -31,6 +31,7 @@ namespace BeyondEarthApp.Web.Api
             ConfigureUserSession(container);
             ConfigureAutoMapper(container);
 
+            //Singleton: shared instance for the entire lifetime of the application
             container
                 .Bind<IDateTime>()
                 .To<DateTimeAdapter>()
@@ -92,6 +93,7 @@ namespace BeyondEarthApp.Web.Api
         {
             XmlConfigurator.Configure();
 
+            //ToConstant: for application-level singleton that our code, not Ninject, instansiates
             var logManager = new LogManagerAdapter();
             container
                 .Bind<ILogManager>()
