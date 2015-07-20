@@ -12,7 +12,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
     {
         [Route("", Name = "AddTechnologyRoute")]
         [HttpPost]
-        public Technology AddTechnology(HttpRequestMessage requestMessage, Technology newTechnology)
+        public Technology AddTechnology(HttpRequestMessage requestMessage, NewTechnology newTechnology)
         {
             return new Technology
             {
