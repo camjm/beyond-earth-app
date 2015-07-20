@@ -41,6 +41,9 @@
   <ItemGroup>
     <Compile Include="Building.cs" />
     <Compile Include="Link.cs" />
+    <Compile Include="NewBuilding.cs" />
+    <Compile Include="NewTechnology.cs" />
+    <Compile Include="NewUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Technology.cs" />
     <Compile Include="Unit.cs" />
