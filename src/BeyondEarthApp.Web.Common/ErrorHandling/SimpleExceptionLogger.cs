@@ -18,7 +18,7 @@ namespace BeyondEarthApp.Web.Common.ErrorHandling
 
         public override void Log(ExceptionLoggerContext context)
         {
-            // have access to the entire exception context, not just the exception
+            // have access to the entire exception context, including the HttpRequestMessage, not just the exception
             _log.Error("Unhandled Exception", context.Exception);
         }
     }

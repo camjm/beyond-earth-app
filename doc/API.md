@@ -1,5 +1,48 @@
 # REST API Service
 
+## API Service Design
+
+### Released
+
+#### Technology Operations
+|URI 										|Verb 		|Description																				|
+|-------------------------------------------|-----------|-------------------------------------------------------------------------------------------|
+|/api/technologies							|GET		|Gets the full list of technologies. Filter by URL query string arguments.					|
+|/api/technologies							|POST		|Creates a new technology. Returns the new technology.										|
+|/api/technologies/123						|GET		|Gets the details for the specified technology.												|
+|/api/technologies/123						|PUT		|Updates the specified technology. Returns the updated technology.							|
+|/api/technologies/123/buildings			|GET 		|Gets the buildings of the specified technology.											|
+|/api/technologies/123/buildings			|PUT		|Replaces all buildings of the specified technology. Returns the updated technology.		|
+|/api/technoligies/123/buildings			|DELETE		|Deletes all buildings from the specified technology. Returns the updated technology.		|
+|/api/technoligies/123/buildings/456		|PUT		|Adds the specified building to the technology. Returns the updated technology.				|
+|/api/technoligies/123/buildings/456		|DELETE		|Deletes the specified building from the technology. Returns the updated technology.		|
+|/api/technologies/123/units				|GET 		|Gets the units of the specified technology.												|
+|/api/technologies/123/units				|PUT		|Replaces all units of the specified technology. Returns the updated technology.			|
+|/api/technoligies/123/units				|DELETE		|Deletes all units from the specified technology. Returns the updated technology.			|
+|/api/technoligies/123/units/456			|PUT		|Adds the specified units to the technology. Returns the updated technology.				|
+|/api/technoligies/123/units/456			|DELETE		|Deletes the specified units from the technology. Returns the updated technology.			|
+
+#### Building Operations
+|URI 										|Verb 		|Description																				|
+|-------------------------------------------|-----------|-------------------------------------------------------------------------------------------|
+|/api/buildings								|GET		|Gets the full list of buildings. Filter by URL query string arguments.						|
+|/api/buildings								|POST		|Creates a new building. Returns the new building.											|
+|/api/buildings/123							|GET		|Gets the details for the specified building.												|
+|/api/buildings/123							|PUT		|Updates the specified building. Returns the updated building.								|
+
+#### Unit Operations
+|URI 										|Verb 		|Description																				|
+|-------------------------------------------|-----------|-------------------------------------------------------------------------------------------|
+|/api/units									|GET		|Gets the full list of units. Filter by URL query string arguments.							|
+|/api/units									|POST		|Creates a new unit. Returns the new unit.													|
+|/api/units/123								|GET		|Gets the details for the specified unit.													|
+|/api/units/123								|PUT		|Updates the specified unit. Returns the updated unit.										|
+
+### In Development
+
+#### Affinities
+
+
 ## REST Architecture
 REST APIs are resource-centric. They are oriented around nouns, and the actions are constrained by HTTP Verbs.
 * Unique URI for each resource.
