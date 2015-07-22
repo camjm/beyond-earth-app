@@ -53,6 +53,7 @@
     <Compile Include="Mapping\UnitMap.cs" />
     <Compile Include="Mapping\VersionedClassMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryProcessors\AddTechnologyQueryProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

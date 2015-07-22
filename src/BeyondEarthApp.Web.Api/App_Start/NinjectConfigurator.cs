@@ -1,7 +1,9 @@
 ﻿using BeyondEarthApp.Common;
 using BeyondEarthApp.Common.Logging;
 using BeyondEarthApp.Common.Security;
+using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Data.SqlServer.Mapping;
+using BeyondEarthApp.Data.SqlServer.QueryProcessors;
 using BeyondEarthApp.Web.Common;
 using BeyondEarthApp.Web.Common.Security;
 using FluentNHibernate.Cfg;
@@ -38,6 +40,11 @@ namespace BeyondEarthApp.Web.Api
                 .Bind<IDateTime>()
                 .To<DateTimeAdapter>()
                 .InSingletonScope();
+
+            container
+                .Bind<IAddTechnologyQueryProcessor>()
+                .To<AddTechnologyQueryProcessor>()
+                .InRequestScope();
         }
 
         private void ConfigureAutoMapper(IKernel container)
