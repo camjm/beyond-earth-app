@@ -1,7 +1,9 @@
 ﻿using BeyondEarthApp.Common;
 using BeyondEarthApp.Common.Logging;
+using BeyondEarthApp.Common.Security;
 using BeyondEarthApp.Data.SqlServer.Mapping;
 using BeyondEarthApp.Web.Common;
+using BeyondEarthApp.Web.Common.Security;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using log4net.Config;
@@ -45,7 +47,16 @@ namespace BeyondEarthApp.Web.Api
 
         private void ConfigureUserSession(IKernel container)
         {
-            //TODO
+            // UserSession is just a wrapper, does not store state, so can be singleton
+            var userSession = new UserSession();
+            container
+                .Bind<IUserSession>()
+                .ToConstant(userSession)
+                .InSingletonScope();
+            container
+                .Bind<IWebUserSession>()
+                .ToConstant(userSession)
+                .InSingletonScope();
         }
 
         private void ConfigureNHibernate(IKernel container)

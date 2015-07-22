@@ -53,6 +53,7 @@
     <Compile Include="Logging\ILogManager.cs" />
     <Compile Include="Logging\LogManagerAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\IUserSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
