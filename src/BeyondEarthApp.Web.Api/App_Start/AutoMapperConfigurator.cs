@@ -4,6 +4,9 @@ using BeyondEarthApp.Common.TypeMapping;
 
 namespace BeyondEarthApp.Web.Api
 {
+    /// <summary>
+    /// Run each AutoMapper configurator in the application start-up
+    /// </summary>
     public class AutoMapperConfigurator
     {
         public void Configure(IAutoMapper mapper, IEnumerable<IAutoMapperTypeConfigurator> configurators)

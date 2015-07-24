@@ -2,6 +2,9 @@
 
 namespace BeyondEarthApp.Common.TypeMapping
 {
+    /// <summary>
+    /// Wrapper around static AutoMapper functions
+    /// </summary>
     public class AutoMapperAdapter : IAutoMapper
     {
         public T Map<T>(object objectToMap)
