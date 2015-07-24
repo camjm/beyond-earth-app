@@ -114,9 +114,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfigurator.cs" />
     <Compile Include="App_Start\NinjectConfigurator.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AutoMappingConfiguration\EntityToService\BuildingConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\EntityToService\TechnologyBuildingsResolver.cs" />
+    <Compile Include="AutoMappingConfiguration\EntityToService\TechnologyConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\EntityToService\TechnologyUnitsResolver.cs" />
+    <Compile Include="AutoMappingConfiguration\EntityToService\UnitConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\ServiceToEntity\BuildingConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\ServiceToEntity\NewTechnologyConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\ServiceToEntity\UnitConfigurator.cs" />
     <Compile Include="Controllers\V1\TechnologiesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using BeyondEarthApp.Common.Logging;
+using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Web.Common;
 
 namespace BeyondEarthApp.Web.Api
@@ -9,6 +10,10 @@ namespace BeyondEarthApp.Web.Api
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            new AutoMapperConfigurator().Configure(
+                WebContainerManager.Get<IAutoMapper>(), 
+                WebContainerManager.GetAll<IAutoMapperTypeConfigurator>());
         }
 
         /// <summary>

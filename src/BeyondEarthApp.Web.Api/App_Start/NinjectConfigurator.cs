@@ -1,6 +1,7 @@
 ﻿using BeyondEarthApp.Common;
 using BeyondEarthApp.Common.Logging;
 using BeyondEarthApp.Common.Security;
+using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Data.SqlServer.Mapping;
 using BeyondEarthApp.Data.SqlServer.QueryProcessors;
@@ -14,6 +15,8 @@ using NHibernate.Context;
 using Ninject;
 using Ninject.Activation;
 using Ninject.Web.Common;
+using EntityToService = BeyondEarthApp.Web.Api.AutoMappingConfiguration.EntityToService;
+using ServiceToEntity = BeyondEarthApp.Web.Api.AutoMappingConfiguration.ServiceToEntity;
 
 namespace BeyondEarthApp.Web.Api
 {
@@ -49,7 +52,28 @@ namespace BeyondEarthApp.Web.Api
 
         private void ConfigureAutoMapper(IKernel container)
         {
-            //TODO
+            container
+                .Bind<IAutoMapper>()
+                .To<AutoMapperAdapter>()
+                .InSingletonScope();
+
+            // Map Entity to Service
+            MapConfigurator<EntityToService.TechnologyConfigurator>(container);
+            MapConfigurator<EntityToService.BuildingConfigurator>(container);
+            MapConfigurator<EntityToService.UnitConfigurator>(container);
+
+            // Map Service to Entity
+            MapConfigurator<ServiceToEntity.NewTechnologyConfigurator>(container);
+            MapConfigurator<ServiceToEntity.BuildingConfigurator>(container);
+            MapConfigurator<ServiceToEntity.UnitConfigurator>(container);
+        }
+
+        private void MapConfigurator<T>(IKernel container) where T : IAutoMapperTypeConfigurator
+        {
+            container
+                .Bind<IAutoMapperTypeConfigurator>()
+                .To<T>()
+                .InSingletonScope();
         }
 
         private void ConfigureUserSession(IKernel container)
