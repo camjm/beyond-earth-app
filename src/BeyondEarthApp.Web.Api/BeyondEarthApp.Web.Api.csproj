@@ -125,11 +125,14 @@
     <Compile Include="AutoMappingConfiguration\EntityToService\UnitConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\BuildingConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\NewTechnologyConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\ServiceToEntity\TechnologyConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\UnitConfigurator.cs" />
     <Compile Include="Controllers\V1\TechnologiesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MaintenanceProcessing\AddTechnologyMaintenanceProcessor.cs" />
+    <Compile Include="MaintenanceProcessing\IAddTechnologyMaintenanceProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

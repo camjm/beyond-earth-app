@@ -5,6 +5,7 @@ using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Data.SqlServer.Mapping;
 using BeyondEarthApp.Data.SqlServer.QueryProcessors;
+using BeyondEarthApp.Web.Api.MaintenanceProcessing;
 using BeyondEarthApp.Web.Common;
 using BeyondEarthApp.Web.Common.Security;
 using FluentNHibernate.Cfg;
@@ -38,15 +39,22 @@ namespace BeyondEarthApp.Web.Api
             ConfigureUserSession(container);
             ConfigureAutoMapper(container);
 
-            //Singleton: shared instance for the entire lifetime of the application
+            // Singleton: shared instance for the entire lifetime of the application
             container
                 .Bind<IDateTime>()
                 .To<DateTimeAdapter>()
                 .InSingletonScope();
 
+            // Query processors
             container
                 .Bind<IAddTechnologyQueryProcessor>()
                 .To<AddTechnologyQueryProcessor>()
+                .InRequestScope();
+
+            // Maintenance processors
+            container
+                .Bind<IAddTechnologyMaintenanceProcessor>()
+                .To<AddTechnologyMaintenanceProcessor>()
                 .InRequestScope();
         }
 
@@ -64,6 +72,7 @@ namespace BeyondEarthApp.Web.Api
 
             // Map Service to Entity
             MapConfigurator<ServiceToEntity.NewTechnologyConfigurator>(container);
+            MapConfigurator<ServiceToEntity.TechnologyConfigurator>(container);
             MapConfigurator<ServiceToEntity.BuildingConfigurator>(container);
             MapConfigurator<ServiceToEntity.UnitConfigurator>(container);
         }
