@@ -2,7 +2,7 @@
 
 namespace BeyondEarthApp.Web.Api.Models
 {
-    public class Technology
+    public class Technology : ILinkContaining
     {
         public long TechnologyId { get; set; }
 

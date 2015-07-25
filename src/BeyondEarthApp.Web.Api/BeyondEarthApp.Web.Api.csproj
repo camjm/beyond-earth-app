@@ -133,6 +133,8 @@
     </Compile>
     <Compile Include="MaintenanceProcessing\AddTechnologyMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\IAddTechnologyMaintenanceProcessor.cs" />
+    <Compile Include="MaintenanceProcessing\LocationLinkCalculator.cs" />
+    <Compile Include="MaintenanceProcessing\TechnologyCreatedActionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using BeyondEarthApp.Common;
 using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Web.Api.Models;
@@ -30,12 +31,12 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
             var technology = _autoMapper.Map<Technology>(technologyEntity);
 
             //TODO: implement Link Service
-            //technology.AddLink(new Link
-            //{
-            //    Method = HttpMethod.Get.Method,
-            //    Href = "",
-            //    Rel = ""
-            //});
+            technology.AddLink(new Link
+            {
+                Method = HttpMethod.Get.Method,
+                Href = "http://localhost:52204/api/v1/technologies/" + technology.TechnologyId,
+                Rel = Constants.CommonLinkRelValues.Self
+            });
 
             return technology;
         }

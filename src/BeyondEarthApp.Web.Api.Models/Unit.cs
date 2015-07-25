@@ -2,7 +2,7 @@
 
 namespace BeyondEarthApp.Web.Api.Models
 {
-    public class Unit
+    public class Unit : ILinkContaining
     {
         public long UnitId { get; set; }
 

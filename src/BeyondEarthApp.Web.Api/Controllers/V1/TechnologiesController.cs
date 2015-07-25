@@ -20,11 +20,12 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
 
         [Route("", Name = "AddTechnologyRoute")]
         [HttpPost]
-        public Technology AddTechnology(HttpRequestMessage requestMessage, NewTechnology newTechnology)
+        public IHttpActionResult AddTechnology(HttpRequestMessage requestMessage, NewTechnology newTechnology)
         {
             // Delegate all work to maintenance processor
             var technology = _addTechnologyMaintenanceProcessor.AddTechnology(newTechnology);
-            return technology;
+            var result = new TechnologyCreatedActionResult(technology, requestMessage);
+            return result;
         }
     }
 }

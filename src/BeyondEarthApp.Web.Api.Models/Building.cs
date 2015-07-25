@@ -2,7 +2,7 @@
 
 namespace BeyondEarthApp.Web.Api.Models
 {
-    public class Building
+    public class Building : ILinkContaining
     {
         public long BuildingId { get; set; }
 
