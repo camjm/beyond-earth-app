@@ -1,4 +1,5 @@
-﻿CREATE TABLE [dbo].[Unit] (
+﻿CREATE TABLE [dbo].[Unit] 
+(
 	[UnitId]		BIGINT			IDENTITY (1, 1) NOT NULL,
 	[TechnologyId]	BIGINT			NOT NULL,
 	[Name]			NVARCHAR (100)	NOT NULL,

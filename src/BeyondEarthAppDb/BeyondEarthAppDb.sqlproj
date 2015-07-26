@@ -72,5 +72,9 @@
     <Build Include="Tables\Technology.sql" />
     <Build Include="Tables\Building.sql" />
     <Build Include="Tables\Unit.sql" />
+    <Build Include="Tables\Faction.sql" />
+    <Build Include="Tables\User.sql" />
+    <Build Include="Tables\Game.sql" />
+    <Build Include="Tables\GameTechnology.sql" />
   </ItemGroup>
 </Project>
