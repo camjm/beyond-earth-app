@@ -19,12 +19,6 @@ namespace BeyondEarthApp.Data.SqlServer.Mapping
              *      .Inverse() - probably required, see: http://stackoverflow.com/questions/713637/inverse-attribute-in-nhibernate
              *      .Cascade
              */
-
-            //HasManyToMany(x => x.Users)
-            //    .Access.ReadOnlyPropertyThroughCamelCaseField(Prefix.Underscore)
-            //    .Table("TaskUser")
-            //    .ParentKeyColumn("TaskId")
-            //    .ChildKeyColumn("UserId");
         }
     }
 }

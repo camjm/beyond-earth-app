@@ -40,9 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Building.cs" />
+    <Compile Include="Entities\Faction.cs" />
+    <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\IVersionedEntity.cs" />
     <Compile Include="Entities\Technology.cs" />
     <Compile Include="Entities\Unit.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\ChildObjectNotFoundException.cs" />
     <Compile Include="Exceptions\RootObjectNotFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
