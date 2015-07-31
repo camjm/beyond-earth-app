@@ -119,22 +119,35 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\BuildingConfigurator.cs" />
-    <Compile Include="AutoMappingConfiguration\EntityToService\TechnologyBuildingsResolver.cs" />
+    <Compile Include="AutoMappingConfiguration\EntityToService\FactionConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\EntityToService\GameConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\EntityToService\UserConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\Resolvers\GameTechnologyResolver.cs" />
+    <Compile Include="AutoMappingConfiguration\Resolvers\ListValueResolver.cs" />
+    <Compile Include="AutoMappingConfiguration\Resolvers\TechnologyBuildingsResolver.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\TechnologyConfigurator.cs" />
-    <Compile Include="AutoMappingConfiguration\EntityToService\TechnologyUnitsResolver.cs" />
+    <Compile Include="AutoMappingConfiguration\Resolvers\TechnologyUnitsResolver.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\UnitConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\Resolvers\UserGameResolver.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\BuildingConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\ServiceToEntity\FactionConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\ServiceToEntity\GameConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\ServiceToEntity\NewGameConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\NewTechnologyConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\TechnologyConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\UnitConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\ServiceToEntity\UserConfigurator.cs" />
+    <Compile Include="Controllers\V1\GamesController.cs" />
     <Compile Include="Controllers\V1\TechnologiesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MaintenanceProcessing\AddGameMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\AddTechnologyMaintenanceProcessor.cs" />
+    <Compile Include="MaintenanceProcessing\CreatedActionResult.cs" />
+    <Compile Include="MaintenanceProcessing\IAddGameMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\IAddTechnologyMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\LocationLinkCalculator.cs" />
-    <Compile Include="MaintenanceProcessing\TechnologyCreatedActionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,16 +10,14 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
     /// <summary>
     /// Encapsulates the logic for setting the HTTP Response Code and Location Header
     /// </summary>
-    public class TechnologyCreatedActionResult : IHttpActionResult
+    public class CreatedActionResult<T> : IHttpActionResult where T : ILinkContaining
     {
-        private readonly Technology _createdTechnology;
+        private readonly T _model;
         private readonly HttpRequestMessage _requestMessage;
 
-        public TechnologyCreatedActionResult(
-            Technology createdTechnology, 
-            HttpRequestMessage requestMessage)
+        public CreatedActionResult(T model, HttpRequestMessage requestMessage)
         {
-            _createdTechnology = createdTechnology;
+            _model = model;
             _requestMessage = requestMessage;
         }
 
@@ -30,9 +28,9 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
 
         public HttpResponseMessage Execute()
         {
-            var responseMessage = _requestMessage.CreateResponse(HttpStatusCode.Created, _createdTechnology);
+            var responseMessage = _requestMessage.CreateResponse(HttpStatusCode.Created, _model);
 
-            responseMessage.Headers.Location = LocationLinkCalculator.GetLocationLink(_createdTechnology);
+            responseMessage.Headers.Location = LocationLinkCalculator.GetLocationLink(_model);
 
             return responseMessage;
         }

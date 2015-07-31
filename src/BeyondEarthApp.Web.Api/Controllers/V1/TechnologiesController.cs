@@ -24,7 +24,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
         {
             // Delegate all work to maintenance processor
             var technology = _addTechnologyMaintenanceProcessor.AddTechnology(newTechnology);
-            var result = new TechnologyCreatedActionResult(technology, requestMessage);
+            var result = new CreatedActionResult<Technology>(technology, requestMessage);
             return result;
         }
     }

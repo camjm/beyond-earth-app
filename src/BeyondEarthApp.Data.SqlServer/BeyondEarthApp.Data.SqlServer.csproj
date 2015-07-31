@@ -56,6 +56,7 @@
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Mapping\VersionedClassMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryProcessors\AddGameQueryProcessor.cs" />
     <Compile Include="QueryProcessors\AddTechnologyQueryProcessor.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,14 +4,13 @@ using BeyondEarthApp.Web.Api.AutoMappingConfiguration.Resolvers;
 
 namespace BeyondEarthApp.Web.Api.AutoMappingConfiguration.EntityToService
 {
-    public class TechnologyConfigurator : IAutoMapperTypeConfigurator
+    public class UserConfigurator : IAutoMapperTypeConfigurator
     {
         public void Configure(IAutoMapper mapper)
         {
-            mapper.CreateMap<Technology, Models.Technology>()
+            mapper.CreateMap<User, Models.User>()
                 .ForMember(opt => opt.Links, x => x.Ignore())
-                .ForMember(opt => opt.Buildings, x => x.ResolveUsing<TechnologyBuildingsResolver>())
-                .ForMember(opt => opt.Units, x => x.ResolveUsing<TechnologyUnitsResolver>());
+                .ForMember(opt => opt.Games, x => x.ResolveUsing<UserGameResolver>());
         }
     }
 }
