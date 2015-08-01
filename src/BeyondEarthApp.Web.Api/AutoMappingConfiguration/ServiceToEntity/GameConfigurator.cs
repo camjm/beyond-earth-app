@@ -8,6 +8,7 @@ namespace BeyondEarthApp.Web.Api.AutoMappingConfiguration.ServiceToEntity
         public void Configure(IAutoMapper mapper)
         {
             mapper.CreateMap<Game, Data.Entities.Game>()
+                .ForMember(opts => opts.User, x => x.Ignore())
                 .ForMember(opt => opt.Version, x => x.Ignore());
         }
     }
