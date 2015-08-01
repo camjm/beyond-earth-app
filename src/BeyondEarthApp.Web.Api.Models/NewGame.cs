@@ -6,8 +6,6 @@ namespace BeyondEarthApp.Web.Api.Models
     {
         public string Description { get; set; }
 
-        public List<Technology> Technologies { get; set; }
-
         public Faction Faction { get; set; }
     }
 }

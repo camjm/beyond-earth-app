@@ -17,7 +17,7 @@ namespace BeyondEarthApp.Web.Api.Models
 
         #region Serialization
 
-        private bool _serializeTechnologies = true;
+        private bool _serializeTechnologies;
 
         public void SetSerializeTechnologies(bool serialize)
         {
