@@ -51,10 +51,20 @@ namespace BeyondEarthApp.Web.Api
                 .To<AddTechnologyQueryProcessor>()
                 .InRequestScope();
 
+            container
+                .Bind<IAddGameQueryProcessor>()
+                .To<AddGameQueryProcessor>()
+                .InRequestScope();
+
             // Maintenance processors
             container
                 .Bind<IAddTechnologyMaintenanceProcessor>()
                 .To<AddTechnologyMaintenanceProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IAddGameMaintenanceProcessor>()
+                .To<AddGameMaintenanceProcessor>()
                 .InRequestScope();
         }
 
@@ -69,12 +79,19 @@ namespace BeyondEarthApp.Web.Api
             MapConfigurator<EntityToService.TechnologyConfigurator>(container);
             MapConfigurator<EntityToService.BuildingConfigurator>(container);
             MapConfigurator<EntityToService.UnitConfigurator>(container);
+            MapConfigurator<EntityToService.FactionConfigurator>(container);
+            MapConfigurator<EntityToService.GameConfigurator>(container);
+            MapConfigurator<EntityToService.UserConfigurator>(container);
 
             // Map Service to Entity
             MapConfigurator<ServiceToEntity.NewTechnologyConfigurator>(container);
             MapConfigurator<ServiceToEntity.TechnologyConfigurator>(container);
             MapConfigurator<ServiceToEntity.BuildingConfigurator>(container);
             MapConfigurator<ServiceToEntity.UnitConfigurator>(container);
+            MapConfigurator<ServiceToEntity.FactionConfigurator>(container);
+            MapConfigurator<ServiceToEntity.NewGameConfigurator>(container);
+            MapConfigurator<ServiceToEntity.GameConfigurator>(container);
+            MapConfigurator<ServiceToEntity.UserConfigurator>(container);
         }
 
         private void MapConfigurator<T>(IKernel container) where T : IAutoMapperTypeConfigurator

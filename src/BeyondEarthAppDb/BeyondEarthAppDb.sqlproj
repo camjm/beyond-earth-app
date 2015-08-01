@@ -64,6 +64,8 @@
     <None Include="Scripts\TechnologyData.sql" />
     <None Include="Scripts\BuildingData.sql" />
     <None Include="Scripts\UnitData.sql" />
+    <None Include="Scripts\FactionData.sql" />
+    <None Include="Scripts\TestData.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />

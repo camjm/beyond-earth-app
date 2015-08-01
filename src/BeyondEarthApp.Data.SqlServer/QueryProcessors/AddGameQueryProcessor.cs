@@ -23,9 +23,10 @@ namespace BeyondEarthApp.Data.SqlServer.QueryProcessors
         {
             // System-assigned properties
             game.CreatedDate = _dateTime.UtcNow;
-            game.User = _session.QueryOver<User>()
-                .Where(x => x.UserName == _userSession.Username)
-                .SingleOrDefault();
+            //game.User = _session.QueryOver<User>()
+            //    .Where(x => x.UserName == _userSession.Username)
+            //    .SingleOrDefault();
+            game.User = _session.Get<User>(1L); // HACK
 
             game.Faction = _session.QueryOver<Faction>()
                 .Where(x => x.FactionId == game.Faction.FactionId)
