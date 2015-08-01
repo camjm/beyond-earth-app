@@ -11,22 +11,21 @@ namespace BeyondEarthApp.Web.Api.Models
 
         public DateTime CreatedDate { get; set; }
 
-        public User User { get; set; }
-
         public Faction Faction { get; set; }
 
         public List<Technology> Technologies { get; set; }
 
         #region Serialization
 
-        private bool _serializeTechnologies;
+        private bool _serializeTechnologies = true;
 
         public void SetSerializeTechnologies(bool serialize)
         {
             _serializeTechnologies = serialize;
         }
 
-        public bool SerializeTechnologies()
+        // By convention, ASP.NET Web API uses reflection to call ShouldSerialize* methods to detirmine if specific public properties should be serialized
+        public bool ShouldSerializeTechnologies()
         {
             return _serializeTechnologies;
         }

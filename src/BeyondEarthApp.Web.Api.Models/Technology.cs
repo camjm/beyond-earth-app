@@ -16,16 +16,30 @@ namespace BeyondEarthApp.Web.Api.Models
 
         #region Serialization
 
-        private bool _serializeBuildingsAndUnits;
+        private bool _serializeBuildings;
 
-        public void SetSerializeBuildingsAndUnits(bool serialize)
+        public void SetSerializeBuildings(bool serialize)
         {
-            _serializeBuildingsAndUnits = serialize;
+            _serializeBuildings = serialize;
         }
 
-        public bool SerializeBuildingsAndUnits()
+        // By convention, ASP.NET Web API uses reflection to call ShouldSerialize* methods to detirmine if specific public properties should be serialized
+        public bool ShouldSerializeBuildings()
         {
-            return _serializeBuildingsAndUnits;
+            return _serializeBuildings;
+        }
+
+        private bool _serializeUnits;
+
+        public void SetSerializeUnits(bool serialize)
+        {
+            _serializeUnits = serialize;
+        }
+
+        // By convention, ASP.NET Web API uses reflection to call ShouldSerialize* methods to detirmine if specific public properties should be serialized
+        public bool ShouldSerializeUnits()
+        {
+            return _serializeUnits;
         }
 
         #endregion
