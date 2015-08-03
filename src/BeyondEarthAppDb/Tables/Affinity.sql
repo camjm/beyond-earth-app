@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Affinity]
+(
+	[AffinityId]	BIGINT			IDENTITY (1, 1) NOT NULL,
+	[Name]			NVARCHAR (100)	NOT NULL,
+	[Description]	NVARCHAR (300)	NOT NULL,
+	[ts]			ROWVERSION		NOT NULL,
+	PRIMARY KEY CLUSTERED ([AffinityId] ASC)
+)

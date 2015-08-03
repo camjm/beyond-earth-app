@@ -78,5 +78,8 @@
     <Build Include="Tables\User.sql" />
     <Build Include="Tables\Game.sql" />
     <Build Include="Tables\GameTechnology.sql" />
+    <Build Include="Tables\Affinity.sql" />
+    <Build Include="Tables\AffinityBonus.sql" />
+    <Build Include="Tables\TechnologyAffinity.sql" />
   </ItemGroup>
 </Project>
