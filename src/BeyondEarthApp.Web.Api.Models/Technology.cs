@@ -14,6 +14,8 @@ namespace BeyondEarthApp.Web.Api.Models
 
         public List<Unit> Units { get; set; }
 
+        public List<TechnologyAffinity> TechnologyAffinities { get; set; }
+
         #region Serialization
 
         private bool _serializeBuildings;
@@ -40,6 +42,19 @@ namespace BeyondEarthApp.Web.Api.Models
         public bool ShouldSerializeUnits()
         {
             return _serializeUnits;
+        }
+
+        private bool _serializeTechnologyAffinities;
+
+        public void SetSerializeTechnologyAffinities(bool serialize)
+        {
+            _serializeTechnologyAffinities = serialize;
+        }
+
+        // By convention, ASP.NET Web API uses reflection to call ShouldSerialize* methods to detirmine if specific public properties should be serialized
+        public bool ShouldSerializeTechnologyAffinities()
+        {
+            return _serializeTechnologyAffinities;
         }
 
         #endregion

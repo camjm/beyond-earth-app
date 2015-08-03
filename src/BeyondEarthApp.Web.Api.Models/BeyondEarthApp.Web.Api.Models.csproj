@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Affinity.cs" />
+    <Compile Include="AffinityBonus.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="Faction.cs" />
     <Compile Include="Game.cs" />
@@ -50,6 +52,7 @@
     <Compile Include="NewUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Technology.cs" />
+    <Compile Include="TechnologyAffinity.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
