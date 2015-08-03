@@ -8,6 +8,8 @@ namespace BeyondEarthApp.Data.Entities
 
         private readonly IList<Unit> _units = new List<Unit>(); 
 
+        private readonly IList<TechnologyAffinity> _technologyAffinities = new List<TechnologyAffinity>(); 
+
         public virtual long TechnologyId { get; set; }
 
         public virtual string Name { get; set; }
@@ -25,6 +27,12 @@ namespace BeyondEarthApp.Data.Entities
         {
             get { return _units; }
         }
+
+        // getter only to prevent developer from replacing the entire collection
+        public virtual IList<TechnologyAffinity> TechnologyAffinities
+        {
+            get { return _technologyAffinities; }
+        } 
 
         public virtual byte[] Version { get; set; }
     }
