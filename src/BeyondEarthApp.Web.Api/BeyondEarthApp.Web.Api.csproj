@@ -137,6 +137,7 @@
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\TechnologyConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\UnitConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\UserConfigurator.cs" />
+    <Compile Include="Controllers\V1\AffinitiesController.cs" />
     <Compile Include="Controllers\V1\GamesController.cs" />
     <Compile Include="Controllers\V1\TechnologiesController.cs" />
     <Compile Include="Global.asax.cs">
