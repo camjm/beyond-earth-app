@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using BeyondEarthApp.Common.Logging;
 using BeyondEarthApp.Common.TypeMapping;
+using BeyondEarthApp.Web.Api.Security;
 using BeyondEarthApp.Web.Common;
 
 namespace BeyondEarthApp.Web.Api
@@ -11,9 +12,22 @@ namespace BeyondEarthApp.Web.Api
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
+            RegisterHandlers();
+
             new AutoMapperConfigurator().Configure(
                 WebContainerManager.Get<IAutoMapper>(), 
                 WebContainerManager.GetAll<IAutoMapperTypeConfigurator>());
+        }
+
+        /// <summary>
+        /// Adds handlers to the application's message-handler pipeline
+        /// </summary>
+        private void RegisterHandlers()
+        {
+            var logManager = WebContainerManager.Get<ILogManager>();
+            var securityService = WebContainerManager.Get<IBasicSecurityService>();
+
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new BasicAuthenticationMessageHandler(logManager, securityService));
         }
 
         /// <summary>

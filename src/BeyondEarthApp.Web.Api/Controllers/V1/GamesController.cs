@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Web.Http;
+using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing;
 using BeyondEarthApp.Web.Api.Models;
 using BeyondEarthApp.Web.Common;
@@ -20,6 +21,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
 
         [Route("", Name = "AddGameRoute")]
         [HttpPost]
+        [Authorize(Roles = Constants.RoleNames.User)]   // Security Principal on the current HttpContext must have User role. If unauthorized, returns a 401 HTTP status code
         public IHttpActionResult AddGame(HttpRequestMessage requestMessage, NewGame newGame)
         {
             // Delegate all work to maintenance processor

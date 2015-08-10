@@ -6,6 +6,7 @@ using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Data.SqlServer.Mapping;
 using BeyondEarthApp.Data.SqlServer.QueryProcessors;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing;
+using BeyondEarthApp.Web.Api.Security;
 using BeyondEarthApp.Web.Common;
 using BeyondEarthApp.Web.Common.Security;
 using FluentNHibernate.Cfg;
@@ -43,6 +44,12 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<IDateTime>()
                 .To<DateTimeAdapter>()
+                .InSingletonScope();
+
+            // Singleton: stores not state except an ILog instance, which is multithread safe
+            container
+                .Bind<IBasicSecurityService>()
+                .To<BasicSecurityService>()
                 .InSingletonScope();
 
             // Query processors
