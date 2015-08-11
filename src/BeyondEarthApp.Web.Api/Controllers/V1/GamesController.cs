@@ -10,6 +10,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
 {
     [ApiVersion1RoutePrefix("games")]
     [UnitOfWorkActionFilter]
+    [Authorize(Roles = Constants.RoleNames.User)]
     public class GamesController : ApiController
     {
         private readonly IAddGameMaintenanceProcessor _addGameMaintenanceProcessor;

@@ -139,6 +139,7 @@
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\UserConfigurator.cs" />
     <Compile Include="Controllers\V1\AffinitiesController.cs" />
     <Compile Include="Controllers\V1\GamesController.cs" />
+    <Compile Include="Controllers\V1\GameWorkflowController.cs" />
     <Compile Include="Controllers\V1\TechnologiesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -149,6 +150,9 @@
     <Compile Include="MaintenanceProcessing\IAddGameMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\IAddTechnologyMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\LocationLinkCalculator.cs" />
+    <Compile Include="MaintenanceProcessing\Workflow\ICompleteGameProcessor.cs" />
+    <Compile Include="MaintenanceProcessing\Workflow\IRestartGameProcessor.cs" />
+    <Compile Include="MaintenanceProcessing\Workflow\IStartGameProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\BasicAuthenticationMessageHandler.cs" />
     <Compile Include="Security\BasicSecurityService.cs" />
