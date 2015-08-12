@@ -63,6 +63,16 @@ namespace BeyondEarthApp.Web.Api
                 .To<AddGameQueryProcessor>()
                 .InRequestScope();
 
+            container
+                .Bind<IGameByIdQueryProcessor>()
+                .To<IGameByIdQueryProcessor>()
+                .InSingletonScope();
+
+            container
+                .Bind<IUpdateGameStatusQueryProcessor>()
+                .To<UpdateGameStatusQueryProcessor>()
+                .InRequestScope();
+
             // Maintenance processors
             container
                 .Bind<IAddTechnologyMaintenanceProcessor>()
@@ -87,6 +97,7 @@ namespace BeyondEarthApp.Web.Api
             MapConfigurator<EntityToService.BuildingConfigurator>(container);
             MapConfigurator<EntityToService.UnitConfigurator>(container);
             MapConfigurator<EntityToService.FactionConfigurator>(container);
+            MapConfigurator<EntityToService.StatusConfigurator>(container);
             MapConfigurator<EntityToService.GameConfigurator>(container);
             MapConfigurator<EntityToService.UserConfigurator>(container);
 
@@ -96,6 +107,7 @@ namespace BeyondEarthApp.Web.Api
             MapConfigurator<ServiceToEntity.BuildingConfigurator>(container);
             MapConfigurator<ServiceToEntity.UnitConfigurator>(container);
             MapConfigurator<ServiceToEntity.FactionConfigurator>(container);
+            MapConfigurator<ServiceToEntity.StatusConfigurator>(container);
             MapConfigurator<ServiceToEntity.NewGameConfigurator>(container);
             MapConfigurator<ServiceToEntity.GameConfigurator>(container);
             MapConfigurator<ServiceToEntity.UserConfigurator>(container);
