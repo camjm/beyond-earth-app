@@ -66,6 +66,7 @@
     <None Include="Scripts\UnitData.sql" />
     <None Include="Scripts\FactionData.sql" />
     <None Include="Scripts\TestData.sql" />
+    <None Include="Scripts\StatusData.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
@@ -81,5 +82,6 @@
     <Build Include="Tables\Affinity.sql" />
     <Build Include="Tables\AffinityBonus.sql" />
     <Build Include="Tables\TechnologyAffinity.sql" />
+    <Build Include="Tables\Status.sql" />
   </ItemGroup>
 </Project>

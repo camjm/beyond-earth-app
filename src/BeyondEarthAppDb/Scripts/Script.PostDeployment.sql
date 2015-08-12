@@ -10,6 +10,7 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+:r .\StatusData.sql
 :r .\FactionData.sql
 :r .\TechnologyData.sql
 :r .\BuildingData.sql
