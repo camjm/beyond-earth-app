@@ -45,6 +45,7 @@
     <Compile Include="Entities\Faction.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\IVersionedEntity.cs" />
+    <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\Technology.cs" />
     <Compile Include="Entities\TechnologyAffinity.cs" />
     <Compile Include="Entities\Unit.cs" />
@@ -54,6 +55,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryProcessors\IAddGameQueryProcessor.cs" />
     <Compile Include="QueryProcessors\IAddTechnologyQueryProcessor.cs" />
+    <Compile Include="QueryProcessors\IGameByIdQueryProcessor.cs" />
+    <Compile Include="QueryProcessors\IUpdateGameStatusQueryProcessor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

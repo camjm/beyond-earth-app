@@ -121,6 +121,7 @@
     <Compile Include="AutoMappingConfiguration\EntityToService\BuildingConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\FactionConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\GameConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\EntityToService\StatusConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\UserConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\GameTechnologyResolver.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\ListValueResolver.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\GameConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\NewGameConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\NewTechnologyConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\ServiceToEntity\StatusConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\TechnologyConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\UnitConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\ServiceToEntity\UserConfigurator.cs" />

@@ -11,6 +11,8 @@ namespace BeyondEarthApp.Data.Entities
 
         public virtual string Description { get; set; }
 
+        public virtual Status Status { get; set; }
+
         public virtual User User { get; set; }
 
         public virtual Faction Faction { get; set; }
