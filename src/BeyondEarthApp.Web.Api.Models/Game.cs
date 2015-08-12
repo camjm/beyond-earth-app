@@ -11,6 +11,8 @@ namespace BeyondEarthApp.Web.Api.Models
 
         public DateTime CreatedDate { get; set; }
 
+        public Status Status { get; set; }
+
         public Faction Faction { get; set; }
 
         public List<Technology> Technologies { get; set; }

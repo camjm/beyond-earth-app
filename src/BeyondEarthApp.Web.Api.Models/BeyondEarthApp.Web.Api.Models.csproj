@@ -51,6 +51,7 @@
     <Compile Include="NewTechnology.cs" />
     <Compile Include="NewUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Status.cs" />
     <Compile Include="Technology.cs" />
     <Compile Include="TechnologyAffinity.cs" />
     <Compile Include="Unit.cs" />
