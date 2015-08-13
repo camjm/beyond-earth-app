@@ -152,9 +152,12 @@
     <Compile Include="MaintenanceProcessing\IAddGameMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\IAddTechnologyMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\LocationLinkCalculator.cs" />
+    <Compile Include="MaintenanceProcessing\Workflow\CompleteGameProcessor.cs" />
     <Compile Include="MaintenanceProcessing\Workflow\ICompleteGameProcessor.cs" />
     <Compile Include="MaintenanceProcessing\Workflow\IRestartGameProcessor.cs" />
     <Compile Include="MaintenanceProcessing\Workflow\IStartGameProcessor.cs" />
+    <Compile Include="MaintenanceProcessing\Workflow\RestartGameProcessor.cs" />
+    <Compile Include="MaintenanceProcessing\Workflow\StartGameProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\BasicAuthenticationMessageHandler.cs" />
     <Compile Include="Security\BasicSecurityService.cs" />

@@ -6,6 +6,7 @@ using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Data.SqlServer.Mapping;
 using BeyondEarthApp.Data.SqlServer.QueryProcessors;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing;
+using BeyondEarthApp.Web.Api.MaintenanceProcessing.Workflow;
 using BeyondEarthApp.Web.Api.Security;
 using BeyondEarthApp.Web.Common;
 using BeyondEarthApp.Web.Common.Security;
@@ -82,6 +83,21 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<IAddGameMaintenanceProcessor>()
                 .To<AddGameMaintenanceProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IStartGameProcessor>()
+                .To<StartGameProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IRestartGameProcessor>()
+                .To<RestartGameProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<ICompleteGameProcessor>()
+                .To<CompleteGameProcessor>()
                 .InRequestScope();
         }
 

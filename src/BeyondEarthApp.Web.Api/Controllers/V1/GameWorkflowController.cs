@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing.Workflow;
 using BeyondEarthApp.Web.Api.Models;
 using BeyondEarthApp.Web.Common;
@@ -11,6 +12,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
     /// </summary>
     [ApiVersion1RoutePrefix("games")]
     [UnitOfWorkActionFilter]
+    [Authorize(Roles = Constants.RoleNames.User)]
     public class GameWorkflowController : ApiController
     {
         private readonly IStartGameProcessor _startGameProcessor;
