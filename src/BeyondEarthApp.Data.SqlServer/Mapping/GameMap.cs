@@ -10,6 +10,7 @@ namespace BeyondEarthApp.Data.SqlServer.Mapping
             Id(x => x.GameId);
             Map(x => x.Description).Nullable();
             Map(x => x.CreatedDate).Not.Nullable();
+            Map(x => x.StartDate).Nullable();
 
             References(x => x.User, "UserId");
             References(x => x.Faction, "FactionId");
