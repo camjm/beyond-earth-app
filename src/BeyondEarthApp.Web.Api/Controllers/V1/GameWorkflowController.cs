@@ -4,6 +4,7 @@ using BeyondEarthApp.Web.Api.MaintenanceProcessing.Workflow;
 using BeyondEarthApp.Web.Api.Models;
 using BeyondEarthApp.Web.Common;
 using BeyondEarthApp.Web.Common.Routing;
+using BeyondEarthApp.Web.Common.Security;
 
 namespace BeyondEarthApp.Web.Api.Controllers.V1
 {
@@ -46,6 +47,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
         }
 
         [HttpPost]
+        [UserAudit]
         [Route("{gameId:long}/reactivations", Name = "RestartGameRoute")]
         public Game RestartGame(long gameId)
         {
