@@ -5,6 +5,7 @@ using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Data.SqlServer.Mapping;
 using BeyondEarthApp.Data.SqlServer.QueryProcessors;
+using BeyondEarthApp.Web.Api.InquiryProcessing;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing.Workflow;
 using BeyondEarthApp.Web.Api.Security;
@@ -40,6 +41,9 @@ namespace BeyondEarthApp.Web.Api
             ConfigureNHibernate(container);
             ConfigureUserSession(container);
             ConfigureAutoMapper(container);
+            ConfigureQueryProcessors(container);
+            ConfigureMaintenanceProcessors(container);
+            ConfigureInquiryProcessors(container);
 
             // Singleton: shared instance for the entire lifetime of the application
             container
@@ -52,8 +56,11 @@ namespace BeyondEarthApp.Web.Api
                 .Bind<IBasicSecurityService>()
                 .To<BasicSecurityService>()
                 .InSingletonScope();
+        }
 
-            // Query processors
+        private void ConfigureQueryProcessors(IKernel container)
+        {
+            // Add
             container
                 .Bind<IAddTechnologyQueryProcessor>()
                 .To<AddTechnologyQueryProcessor>()
@@ -64,17 +71,28 @@ namespace BeyondEarthApp.Web.Api
                 .To<AddGameQueryProcessor>()
                 .InRequestScope();
 
+            // Get
             container
                 .Bind<IGameByIdQueryProcessor>()
-                .To<IGameByIdQueryProcessor>()
+                .To<GameByIdQueryProcessor>()
                 .InSingletonScope();
 
+            container
+                .Bind<ITechnologyByIdQueryProcessor>()
+                .To<TechnologyByIdQueryProcessor>()
+                .InSingletonScope();
+
+
+            // Update
             container
                 .Bind<IUpdateGameStatusQueryProcessor>()
                 .To<UpdateGameStatusQueryProcessor>()
                 .InRequestScope();
+        }
 
-            // Maintenance processors
+        private void ConfigureMaintenanceProcessors(IKernel container)
+        {
+            // Add
             container
                 .Bind<IAddTechnologyMaintenanceProcessor>()
                 .To<AddTechnologyMaintenanceProcessor>()
@@ -85,6 +103,7 @@ namespace BeyondEarthApp.Web.Api
                 .To<AddGameMaintenanceProcessor>()
                 .InRequestScope();
 
+            // Workflow
             container
                 .Bind<IStartGameProcessor>()
                 .To<StartGameProcessor>()
@@ -98,6 +117,19 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<ICompleteGameProcessor>()
                 .To<CompleteGameProcessor>()
+                .InRequestScope();
+        }
+
+        private void ConfigureInquiryProcessors(IKernel container)
+        {
+            container
+                .Bind<IGameByIdProcessor>()
+                .To<GameByIdProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<ITechnologyByIdProcessor>()
+                .To<TechnologyByIdProcessor>()
                 .InRequestScope();
         }
 
