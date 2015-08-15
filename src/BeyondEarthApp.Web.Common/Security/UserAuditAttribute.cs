@@ -37,7 +37,7 @@ namespace BeyondEarthApp.Web.Common.Security
         {
             _log.Debug("Starting execution...");
 
-            // Have to capture user name here, because HttpContext.Current.User is not available in the AuditCurrentUser method
+            // Have to capture user name here, because HttpContext.Current.User is not available in the AuditCurrentUser method as it is executed asynchronously
             var username = _userSession.Username;
 
             return Task.Run(() => AuditCurrentUser(username));

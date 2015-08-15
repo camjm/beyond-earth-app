@@ -146,11 +146,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InquiryProcessing\ITechnologyByIdProcessor.cs" />
+    <Compile Include="InquiryProcessing\TechnologyByIdProcessor.cs" />
     <Compile Include="MaintenanceProcessing\AddGameMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\AddTechnologyMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\CreatedActionResult.cs" />
     <Compile Include="MaintenanceProcessing\IAddGameMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\IAddTechnologyMaintenanceProcessor.cs" />
+    <Compile Include="InquiryProcessing\GameByIdProcessor.cs" />
+    <Compile Include="InquiryProcessing\IGameByIdProcessor.cs" />
     <Compile Include="MaintenanceProcessing\LocationLinkCalculator.cs" />
     <Compile Include="MaintenanceProcessing\Workflow\CompleteGameProcessor.cs" />
     <Compile Include="MaintenanceProcessing\Workflow\ICompleteGameProcessor.cs" />
