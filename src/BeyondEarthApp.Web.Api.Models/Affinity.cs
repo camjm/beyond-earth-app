@@ -14,6 +14,36 @@ namespace BeyondEarthApp.Web.Api.Models
 
         public List<TechnologyAffinity> AffinityTechnologies { get; set; }
 
+        #region Serialization
+
+        private bool _serializeAffinityBonuses;
+
+        public void SetSerializeAffinityBonuses(bool serialize)
+        {
+            _serializeAffinityBonuses = serialize;
+        }
+
+        // By convention, ASP.NET Web API uses reflection to call ShouldSerialize* methods to detirmine if specific public properties should be serialized
+        public bool ShouldSerializeAffinityBonuses()
+        {
+            return _serializeAffinityBonuses;
+        }
+
+        private bool _serializeAffinityTechnologies;
+
+        public void SetSerializeAffinityTechnologies(bool serialize)
+        {
+            _serializeAffinityTechnologies = serialize;
+        }
+
+        // By convention, ASP.NET Web API uses reflection to call ShouldSerialize* methods to detirmine if specific public properties should be serialized
+        public bool ShouldSerializeAffinityTechnologies()
+        {
+            return _serializeAffinityTechnologies;
+        }
+
+        #endregion
+
         #region Links
 
         private List<Link> _links;
