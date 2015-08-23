@@ -88,6 +88,11 @@ namespace BeyondEarthApp.Web.Api
                 .Bind<IUpdateGameStatusQueryProcessor>()
                 .To<UpdateGameStatusQueryProcessor>()
                 .InRequestScope();
+
+            container
+                .Bind<IUpdateGameQueryProcessor>()
+                .To<UpdateGameQueryProcessor>()
+                .InRequestScope();
         }
 
         private void ConfigureMaintenanceProcessors(IKernel container)
@@ -101,6 +106,12 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<IAddGameMaintenanceProcessor>()
                 .To<AddGameMaintenanceProcessor>()
+                .InRequestScope();
+
+            // Update
+            container
+                .Bind<IGameTechnologiesMaintenceProcessor>()
+                .To<GameTechnologiesMaintenanceProcessor>()
                 .InRequestScope();
 
             // Workflow
