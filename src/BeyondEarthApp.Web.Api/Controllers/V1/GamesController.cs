@@ -14,13 +14,16 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
     [Authorize(Roles = Constants.RoleNames.User)]
     public class GamesController : ApiController
     {
+        private readonly IUpdateGameMaintenanceProcessor _updateGameMaintenanceProcessor;
         private readonly IAddGameMaintenanceProcessor _addGameMaintenanceProcessor;
         private readonly IGameByIdProcessor _gameByIdProcessor;
 
         public GamesController(
+            IUpdateGameMaintenanceProcessor updateGameMaintenanceProcessor,
             IAddGameMaintenanceProcessor addGameMaintenanceProcessor, 
             IGameByIdProcessor gameByIdProcessor)
         {
+            _updateGameMaintenanceProcessor = updateGameMaintenanceProcessor;
             _addGameMaintenanceProcessor = addGameMaintenanceProcessor;
             _gameByIdProcessor = gameByIdProcessor;
         }
@@ -41,6 +44,18 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
         public Game GetGame(long id)
         {
             var game = _gameByIdProcessor.GetGame(id);
+            return game;
+        }
+
+        [HttpPut]
+        [HttpPatch]
+        [Authorize(Roles = Constants.RoleNames.User)]
+        [Route("{id:long}", Name = "UpdateGameRoute")]
+        public Game UpdateGame(long id, [FromBody] object updatedGame) 
+        {
+            // object type makes partial updates possible by allowing a sparse representation of Game. 
+            // If ASP.NET Web API model binding was used, we wouldn't know what the caller wanted to partially update.
+            var game = _updateGameMaintenanceProcessor.UpdateGame(id, updatedGame);
             return game;
         }
     }

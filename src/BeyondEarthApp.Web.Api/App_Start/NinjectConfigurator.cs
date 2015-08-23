@@ -56,6 +56,11 @@ namespace BeyondEarthApp.Web.Api
                 .Bind<IBasicSecurityService>()
                 .To<BasicSecurityService>()
                 .InSingletonScope();
+
+            container
+                .Bind<IUpdateablePropertyDetector>()
+                .To<JObjectUpdateablePropertyDetector>()
+                .InSingletonScope();
         }
 
         private void ConfigureQueryProcessors(IKernel container)
@@ -112,6 +117,11 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<IGameTechnologiesMaintenceProcessor>()
                 .To<GameTechnologiesMaintenanceProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IUpdateGameMaintenanceProcessor>()
+                .To<UpdateGameMaintenanceProcessor>()
                 .InRequestScope();
 
             // Workflow

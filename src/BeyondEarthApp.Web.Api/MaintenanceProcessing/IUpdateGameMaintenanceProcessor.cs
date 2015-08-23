@@ -1,0 +1,9 @@
+﻿using BeyondEarthApp.Web.Api.Models;
+
+namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
+{
+    public interface IUpdateGameMaintenanceProcessor
+    {
+        Game UpdateGame(long gameId, object gameFragment);
+    }
+}
