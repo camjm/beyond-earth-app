@@ -12,6 +12,9 @@ namespace BeyondEarthApp.Web.Common
     /// </summary>
     public class JObjectUpdateablePropertyDetector : IUpdateablePropertyDetector
     {
+        /// <summary>
+        /// Detirmines which properties to update.
+        /// </summary>
         public IEnumerable<string> GetNamesOfPropertiesToUpdate<TTarget>(object objectContainingUpdatedData)
         {
             var objectDataAsJObject = (JObject) objectContainingUpdatedData;

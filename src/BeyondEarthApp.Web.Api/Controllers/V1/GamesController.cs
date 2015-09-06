@@ -6,6 +6,7 @@ using BeyondEarthApp.Web.Api.MaintenanceProcessing;
 using BeyondEarthApp.Web.Api.Models;
 using BeyondEarthApp.Web.Common;
 using BeyondEarthApp.Web.Common.Routing;
+using BeyondEarthApp.Web.Common.Validation;
 
 namespace BeyondEarthApp.Web.Api.Controllers.V1
 {
@@ -30,6 +31,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
 
         [Route("", Name = "AddGameRoute")]
         [HttpPost]
+        [ValidateModel]
         [Authorize(Roles = Constants.RoleNames.User)]   //DONT NEED THIS Security Principal on the current HttpContext must have User role. If unauthorized, returns a 401 HTTP status code
         public IHttpActionResult AddGame(HttpRequestMessage requestMessage, NewGame newGame)
         {
@@ -49,6 +51,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
 
         [HttpPut]
         [HttpPatch]
+        [ValidateGameUpdateRequest]
         [Authorize(Roles = Constants.RoleNames.User)]
         [Route("{id:long}", Name = "UpdateGameRoute")]
         public Game UpdateGame(long id, [FromBody] object updatedGame) 

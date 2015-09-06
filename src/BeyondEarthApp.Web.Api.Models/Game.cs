@@ -10,7 +10,7 @@ namespace BeyondEarthApp.Web.Api.Models
     public class Game : ILinkContaining
     {
         [Key]
-        public long GameId { get; set; }
+        public long? GameId { get; set; }
 
         [Editable(true)]
         public string Description { get; set; }

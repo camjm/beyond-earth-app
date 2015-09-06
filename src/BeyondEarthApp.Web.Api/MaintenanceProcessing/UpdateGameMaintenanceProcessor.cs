@@ -27,6 +27,9 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
             _updateablePropertyDetector = updateablePropertyDetector;
         }
 
+        /// <summary>
+        /// Uses JObject to parse the game fragment into an actual Game instance, persists the updates, and maps the returned entity to the service model.
+        /// </summary>
         public Game UpdateGame(long gameId, object gameFragment)
         {
             var gameFragmentAsJObject = (JObject) gameFragment;
@@ -46,6 +49,9 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
             return game;
         }
 
+        /// <summary>
+        /// Creates the PropertyValueMap instance and populates it with the new values.
+        /// </summary>
         public virtual PropertyValueMapType GetPropertyValueMap(JObject gameFragment, Game gameContainingUpdateData)
         {
             // detirmine the names of the properties that need to be updated

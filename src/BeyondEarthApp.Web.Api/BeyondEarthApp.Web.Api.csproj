@@ -161,6 +161,7 @@
     <Compile Include="MaintenanceProcessing\IUpdateGameMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\LocationLinkCalculator.cs" />
     <Compile Include="MaintenanceProcessing\UpdateGameMaintenanceProcessor.cs" />
+    <Compile Include="MaintenanceProcessing\ValidateGameUpdateRequestAttribute.cs" />
     <Compile Include="MaintenanceProcessing\Workflow\CompleteGameProcessor.cs" />
     <Compile Include="MaintenanceProcessing\Workflow\ICompleteGameProcessor.cs" />
     <Compile Include="MaintenanceProcessing\Workflow\IRestartGameProcessor.cs" />
