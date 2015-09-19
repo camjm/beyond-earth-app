@@ -13,7 +13,7 @@ namespace BeyondEarthApp.Web.Common.Validation
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            // Leverage ASP.NET Web API model-binding process, which performs the validation for us
+            // Leverage ASP.NET Web API model-binding process, which performs the validation for us, based on data annotations
             if (!actionContext.ModelState.IsValid)
             {
                 // prevents processing from reaching the controller's action method 

@@ -61,6 +61,11 @@ namespace BeyondEarthApp.Web.Api
                 .Bind<IUpdateablePropertyDetector>()
                 .To<JObjectUpdateablePropertyDetector>()
                 .InSingletonScope();
+
+            container
+                .Bind<IPagedDataRequestFactory>()
+                .To<PagedDataRequestFactory>()
+                .InSingletonScope();
         }
 
         private void ConfigureQueryProcessors(IKernel container)
