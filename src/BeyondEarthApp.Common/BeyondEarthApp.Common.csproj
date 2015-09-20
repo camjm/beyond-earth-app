@@ -51,6 +51,8 @@
     <Compile Include="BusinessRuleViolationException.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DateTimeAdapter.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="IDateTime.cs" />
     <Compile Include="Logging\ILogManager.cs" />
     <Compile Include="Logging\LogManagerAdapter.cs" />
