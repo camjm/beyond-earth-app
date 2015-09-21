@@ -6,6 +6,7 @@ using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Data.SqlServer.Mapping;
 using BeyondEarthApp.Data.SqlServer.QueryProcessors;
 using BeyondEarthApp.Web.Api.InquiryProcessing;
+using BeyondEarthApp.Web.Api.LinkServices;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing.Workflow;
 using BeyondEarthApp.Web.Api.Security;
@@ -44,6 +45,7 @@ namespace BeyondEarthApp.Web.Api
             ConfigureQueryProcessors(container);
             ConfigureMaintenanceProcessors(container);
             ConfigureInquiryProcessors(container);
+            ConfigureLinkServices(container);
 
             // Singleton: shared instance for the entire lifetime of the application
             container
@@ -103,6 +105,12 @@ namespace BeyondEarthApp.Web.Api
                 .Bind<IUpdateGameQueryProcessor>()
                 .To<UpdateGameQueryProcessor>()
                 .InRequestScope();
+
+            // Paged
+            container
+                .Bind<IAllGamesQueryProcessor>()
+                .To<AllGamesQueryProcessor>()
+                .InRequestScope();
         }
 
         private void ConfigureMaintenanceProcessors(IKernel container)
@@ -148,6 +156,7 @@ namespace BeyondEarthApp.Web.Api
 
         private void ConfigureInquiryProcessors(IKernel container)
         {
+            // Single
             container
                 .Bind<IGameByIdProcessor>()
                 .To<GameByIdProcessor>()
@@ -156,6 +165,45 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<ITechnologyByIdProcessor>()
                 .To<TechnologyByIdProcessor>()
+                .InRequestScope();
+
+            // Paged
+            container
+                .Bind<IAllGamesProcessor>()
+                .To<AllGamesProcessor>()
+                .InRequestScope();
+        }
+
+        private void ConfigureLinkServices(IKernel container)
+        {
+            container
+                .Bind<ICommonLinkService>()
+                .To<CommonLinkService>()
+                .InRequestScope();
+
+            container
+                .Bind<IGameLinkService>()
+                .To<GameLinkService>()
+                .InRequestScope();
+
+            container
+                .Bind<IFactionLinkService>()
+                .To<FactionLinkService>()
+                .InRequestScope();
+
+            container
+                .Bind<ITechnologyLinkService>()
+                .To<TechnologyLinkService>()
+                .InRequestScope();
+
+            container
+                .Bind<IBuildingLinkService>()
+                .To<BuildingLinkService>()
+                .InRequestScope();
+
+            container
+                .Bind<IUnitLinkService>()
+                .To<UnitLinkService>()
                 .InRequestScope();
         }
 

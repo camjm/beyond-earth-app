@@ -15,18 +15,24 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
     [Authorize(Roles = Constants.RoleNames.User)]
     public class GamesController : ApiController
     {
+        private readonly IPagedDataRequestFactory _pagedDataRequestFactory;
         private readonly IUpdateGameMaintenanceProcessor _updateGameMaintenanceProcessor;
         private readonly IAddGameMaintenanceProcessor _addGameMaintenanceProcessor;
         private readonly IGameByIdProcessor _gameByIdProcessor;
+        private readonly IAllGamesProcessor _allGamesProcessor;
 
         public GamesController(
+            IPagedDataRequestFactory pagedDataRequestFactory,
             IUpdateGameMaintenanceProcessor updateGameMaintenanceProcessor,
             IAddGameMaintenanceProcessor addGameMaintenanceProcessor, 
-            IGameByIdProcessor gameByIdProcessor)
+            IGameByIdProcessor gameByIdProcessor,
+            IAllGamesProcessor allGamesProcessor)
         {
+            _pagedDataRequestFactory = pagedDataRequestFactory;
             _updateGameMaintenanceProcessor = updateGameMaintenanceProcessor;
             _addGameMaintenanceProcessor = addGameMaintenanceProcessor;
             _gameByIdProcessor = gameByIdProcessor;
+            _allGamesProcessor = allGamesProcessor;
         }
 
         [Route("", Name = "AddGameRoute")]
@@ -61,5 +67,14 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
             var game = _updateGameMaintenanceProcessor.UpdateGame(id, updatedGame);
             return game;
         }
+
+        [HttpGet]
+        [Route("", Name = "GetGamesRoute")]
+        public PagedDataInquiryResponse<Game> GetGames(HttpRequestMessage requestMessage)
+        {
+            var request = _pagedDataRequestFactory.Create(requestMessage.RequestUri);
+            var games = _allGamesProcessor.GetGames(request);
+            return games;
+        } 
     }
 }

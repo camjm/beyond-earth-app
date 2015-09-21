@@ -46,11 +46,13 @@
     <Compile Include="Faction.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="ILinkContaining.cs" />
+    <Compile Include="IPageLinkContaining.cs" />
     <Compile Include="Link.cs" />
     <Compile Include="NewBuilding.cs" />
     <Compile Include="NewGame.cs" />
     <Compile Include="NewTechnology.cs" />
     <Compile Include="NewUnit.cs" />
+    <Compile Include="PagedDataInquiryResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Technology.cs" />
