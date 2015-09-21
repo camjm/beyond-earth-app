@@ -7,7 +7,8 @@ namespace BeyondEarthApp.Web.Api.AutoMappingConfiguration.EntityToService
     {
         public void Configure(IAutoMapper mapper)
         {
-            mapper.CreateMap<Faction, Models.Faction>();
+            mapper.CreateMap<Faction, Models.Faction>()
+                .ForMember(opt => opt.Links, x => x.Ignore());
         }
     }
 }

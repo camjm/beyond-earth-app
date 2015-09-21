@@ -12,7 +12,9 @@ namespace BeyondEarthApp.Web.Api.AutoMappingConfiguration.ServiceToEntity
                 .ForMember(opt => opt.GameId, x => x.Ignore())
                 .ForMember(opt => opt.Technologies, x => x.Ignore())
                 .ForMember(opt => opt.User, x => x.Ignore())
-                .ForMember(opt => opt.CreatedDate, x => x.Ignore());
+                .ForMember(opt => opt.Status, x => x.Ignore())
+                .ForMember(opt => opt.CreatedDate, x => x.Ignore())
+                .ForMember(opt => opt.StartDate, x => x.Ignore());
         }
     }
 }
