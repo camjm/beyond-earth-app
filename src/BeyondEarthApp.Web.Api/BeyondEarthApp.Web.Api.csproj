@@ -147,10 +147,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InquiryProcessing\AllGamesProcessor.cs" />
+    <Compile Include="InquiryProcessing\IAllGamesProcessor.cs" />
     <Compile Include="InquiryProcessing\IPagedDataRequestFactory.cs" />
     <Compile Include="InquiryProcessing\ITechnologyByIdProcessor.cs" />
     <Compile Include="InquiryProcessing\PagedDataRequestFactory.cs" />
     <Compile Include="InquiryProcessing\TechnologyByIdProcessor.cs" />
+    <Compile Include="LinkServices\BuildingLinkService.cs" />
+    <Compile Include="LinkServices\CommonLinkService.cs" />
+    <Compile Include="LinkServices\FactionLinkService.cs" />
+    <Compile Include="LinkServices\GameLinkService.cs" />
+    <Compile Include="LinkServices\IBuildingLinkService.cs" />
+    <Compile Include="LinkServices\ICommonLinkService.cs" />
+    <Compile Include="LinkServices\IFactionLinkService.cs" />
+    <Compile Include="LinkServices\IGameLinkService.cs" />
+    <Compile Include="LinkServices\ITechnologyLinkService.cs" />
+    <Compile Include="LinkServices\IUnitLinkService.cs" />
+    <Compile Include="LinkServices\TechnologyLinkService.cs" />
+    <Compile Include="LinkServices\UnitLinkService.cs" />
     <Compile Include="MaintenanceProcessing\AddGameMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\AddTechnologyMaintenanceProcessor.cs" />
     <Compile Include="MaintenanceProcessing\CreatedActionResult.cs" />
