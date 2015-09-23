@@ -31,6 +31,7 @@ namespace BeyondEarthApp.Web.Api
 
             GlobalConfiguration.Configuration.MessageHandlers.Add(new BasicAuthenticationMessageHandler(logManager, securityService));
             GlobalConfiguration.Configuration.MessageHandlers.Add(new UserDataSecurityMessageHandler(logManager, userSession));
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new PagedGameDataSecurityMessageHandler(logManager, userSession));
         }
 
         /// <summary>
