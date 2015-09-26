@@ -16,16 +16,22 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             _userSession = userSession;
         }
 
-        public Link GetLink(string pathFragment, string relValue, HttpMethod httpMethod)
+        /// <summary>
+        /// Creates the Link Uri by prepending a versioned base path prefix to the specified path fragment
+        /// </summary>
+        public virtual Link GetLink(string pathFragment, string relValue, HttpMethod httpMethod)
         {
             // use _userSession.RequestUri.GetBaseUri() instead?
             const string delimitedVersionedApiRouteBaseFormatString =
                 Constants.CommonRoutingDefinitions.ApiSegmentName + "/{0}/";
 
             var path = string.Concat(
-                string.Format(delimitedVersionedApiRouteBaseFormatString, _userSession.ApiVersionInUse),
+                string.Format(
+                    delimitedVersionedApiRouteBaseFormatString, 
+                    _userSession.ApiVersionInUse),
                 pathFragment);
 
+            // construct a properly formed uri to assign to the Href of the link
             var uriBuilder = new UriBuilder
             {
                 Scheme = _userSession.RequestUri.Scheme,
@@ -34,9 +40,17 @@ namespace BeyondEarthApp.Web.Api.LinkServices
                 Path = path
             };
 
+            return GetLink(uriBuilder.Uri, relValue, httpMethod);
+        }
+
+        /// <summary>
+        /// Factory method, creating an appropriate Link instance based on the specified Uri
+        /// </summary>
+        public virtual Link GetLink(Uri uri, string relValue, HttpMethod httpMethod)
+        {
             var link = new Link
             {
-                Href = uriBuilder.Uri.AbsoluteUri,
+                Href = uri.AbsoluteUri,
                 Rel = relValue,
                 Method = httpMethod.Method
             };
@@ -74,7 +88,10 @@ namespace BeyondEarthApp.Web.Api.LinkServices
                 Query = pageQueryString
             };
 
-            var currentPageLink = GetCurrentPageLink(currentPageUriBuilder.Uri);
+            var currentPageLink = GetLink(
+                currentPageUriBuilder.Uri, 
+                Constants.CommonLinkRelValues.CurrentPage, 
+                HttpMethod.Get);
             linkContainer.AddLink(currentPageLink);
         }
 
@@ -85,7 +102,10 @@ namespace BeyondEarthApp.Web.Api.LinkServices
                 Query = pageQueryString
             };
 
-            var previousPageLink = GetPreviousPageLink(previousPageUriBuilder.Uri);
+            var previousPageLink = GetLink(
+                previousPageUriBuilder.Uri,
+                Constants.CommonLinkRelValues.PreviousPage,
+                HttpMethod.Get);
             linkContainer.AddLink(previousPageLink);
         }
 
@@ -96,38 +116,11 @@ namespace BeyondEarthApp.Web.Api.LinkServices
                 Query = pageQueryString
             };
 
-            var nextPageLink = GetNextPageLink(nextPageUriBuilder.Uri);
+            var nextPageLink = GetLink(
+                nextPageUriBuilder.Uri,
+                Constants.CommonLinkRelValues.NextPage,
+                HttpMethod.Get);
             linkContainer.AddLink(nextPageLink);
-        }
-
-        public virtual Link GetCurrentPageLink(Uri uri)
-        {
-            return new Link
-            {
-                Href = uri.AbsoluteUri,
-                Rel = Constants.CommonLinkRelValues.CurrentPage,
-                Method = HttpMethod.Get.Method
-            };
-        }
-
-        public virtual Link GetPreviousPageLink(Uri uri)
-        {
-            return new Link
-            {
-                Href = uri.AbsoluteUri,
-                Rel = Constants.CommonLinkRelValues.PreviousPage,
-                Method = HttpMethod.Get.Method
-            };
-        }
-
-        public virtual Link GetNextPageLink(Uri uri)
-        {
-            return new Link
-            {
-                Href = uri.AbsoluteUri,
-                Rel = Constants.CommonLinkRelValues.NextPage,
-                Method = HttpMethod.Get.Method
-            };
         }
 
         public bool ShouldAddPreviousPageLink(int pageNumber)
