@@ -46,11 +46,14 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
                 PageSize = queryResult.PageSize
             };
 
+            // add the relevant hypermedia links
             AddLinksToInquiryResponse(inquiryResponse);
 
             return inquiryResponse;
         }
-
+        /// <summary>
+        /// Adds Links at the Root (page) level, the Game level, and the Child level (Faction and Technologies)
+        /// </summary>
         public virtual void AddLinksToInquiryResponse(PagedDataInquiryResponse<Game> inquiryResponse)
         {
             inquiryResponse.AddLink(_gameLinkService.GetAllGamesLink());
@@ -66,6 +69,7 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
         {
             var games = gameEntities.Select(x => _autoMapper.Map<Game>(x)).ToList();
 
+            // add the self links and the children self links to the game service model
             games.ForEach(x =>
             {
                 _gameLinkService.AddSelfLink(x);

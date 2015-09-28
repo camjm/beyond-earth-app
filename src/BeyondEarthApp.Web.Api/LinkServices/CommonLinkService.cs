@@ -58,6 +58,9 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             return link;
         }
 
+        /// <summary>
+        /// Adds paging Links to a paged response
+        /// </summary>
         public void AddPageLinks(
             IPageLinkContaining linkContainer, 
             string currentPageQueryString, 
@@ -81,6 +84,9 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             }
         }
 
+        /// <summary>
+        /// Builds the proper Uri and ands the Link to the paged response
+        /// </summary>
         public virtual void AddCurrentPageLink(IPageLinkContaining linkContainer, Uri versionedBaseUri, string pageQueryString)
         {
             var currentPageUriBuilder = new UriBuilder(versionedBaseUri)
@@ -95,6 +101,9 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             linkContainer.AddLink(currentPageLink);
         }
 
+        /// <summary>
+        /// Builds the proper Uri and ands the Link to the paged response
+        /// </summary>
         public virtual void AddPreviousPageLink(IPageLinkContaining linkContainer, Uri versionedBaseUri, string pageQueryString)
         {
             var previousPageUriBuilder = new UriBuilder(versionedBaseUri)
@@ -109,6 +118,9 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             linkContainer.AddLink(previousPageLink);
         }
 
+        /// <summary>
+        /// Builds the proper Uri and ands the Link to the paged response
+        /// </summary>
         public virtual void AddNextPageLink(IPageLinkContaining linkContainer, Uri versionedBaseUri, string pageQueryString)
         {
             var nextPageUriBuilder = new UriBuilder(versionedBaseUri)
