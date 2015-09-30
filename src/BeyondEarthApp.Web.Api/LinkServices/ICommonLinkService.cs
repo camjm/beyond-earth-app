@@ -9,12 +9,6 @@ namespace BeyondEarthApp.Web.Api.LinkServices
     /// </summary>
     public interface ICommonLinkService
     {
-        void AddPageLinks(
-            IPageLinkContaining linkContainer, 
-            string currentPageQueryString, 
-            string previousPageQueryString, 
-            string nextPageQueryString);
-
         Link GetLink(
             string pathFragment,
             string relValue,
@@ -24,5 +18,7 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             Uri uri,
             string relValue,
             HttpMethod httpMethod);
+
+        void AddPageLinks(IPageLinkContaining linkContainer);
     }
 }

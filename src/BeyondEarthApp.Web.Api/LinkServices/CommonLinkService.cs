@@ -9,6 +9,7 @@ namespace BeyondEarthApp.Web.Api.LinkServices
 {
     public class CommonLinkService : ICommonLinkService
     {
+        public const string QueryStringFormat = "{0}={1}&{2}={3}";
         private readonly IWebUserSession _userSession;
 
         public CommonLinkService(IWebUserSession userSession)
@@ -61,37 +62,33 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         /// <summary>
         /// Adds paging Links to a paged response
         /// </summary>
-        public void AddPageLinks(
-            IPageLinkContaining linkContainer, 
-            string currentPageQueryString, 
-            string previousPageQueryString,
-            string nextPageQueryString)
+        public void AddPageLinks(IPageLinkContaining linkContainer)
         {
             var versionedBaseUri = _userSession.RequestUri.GetBaseUri();
 
-            AddCurrentPageLink(linkContainer, versionedBaseUri, currentPageQueryString);
+            AddCurrentPageLink(linkContainer, versionedBaseUri);
 
             var addPreviousPageLink = ShouldAddPreviousPageLink(linkContainer.PageNumber);
             if (addPreviousPageLink)
             {
-                AddPreviousPageLink(linkContainer, versionedBaseUri, previousPageQueryString);
+                AddPreviousPageLink(linkContainer, versionedBaseUri);
             }
 
             var addNextPageLink = ShouldAddNextPageLink(linkContainer.PageNumber, linkContainer.PageCount);
             if (addNextPageLink)
             {
-                AddNextPageLink(linkContainer, versionedBaseUri, nextPageQueryString);
+                AddNextPageLink(linkContainer, versionedBaseUri);
             }
         }
 
         /// <summary>
         /// Builds the proper Uri and ands the Link to the paged response
         /// </summary>
-        public virtual void AddCurrentPageLink(IPageLinkContaining linkContainer, Uri versionedBaseUri, string pageQueryString)
+        public virtual void AddCurrentPageLink(IPageLinkContaining linkContainer, Uri versionedBaseUri)
         {
             var currentPageUriBuilder = new UriBuilder(versionedBaseUri)
             {
-                Query = pageQueryString
+                Query = GetQueryString(linkContainer.PageNumber, linkContainer.PageSize)
             };
 
             var currentPageLink = GetLink(
@@ -104,11 +101,11 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         /// <summary>
         /// Builds the proper Uri and ands the Link to the paged response
         /// </summary>
-        public virtual void AddPreviousPageLink(IPageLinkContaining linkContainer, Uri versionedBaseUri, string pageQueryString)
+        public virtual void AddPreviousPageLink(IPageLinkContaining linkContainer, Uri versionedBaseUri)
         {
             var previousPageUriBuilder = new UriBuilder(versionedBaseUri)
             {
-                Query = pageQueryString
+                Query = GetQueryString(linkContainer.PageNumber - 1, linkContainer.PageSize)
             };
 
             var previousPageLink = GetLink(
@@ -121,11 +118,11 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         /// <summary>
         /// Builds the proper Uri and ands the Link to the paged response
         /// </summary>
-        public virtual void AddNextPageLink(IPageLinkContaining linkContainer, Uri versionedBaseUri, string pageQueryString)
+        public virtual void AddNextPageLink(IPageLinkContaining linkContainer, Uri versionedBaseUri)
         {
             var nextPageUriBuilder = new UriBuilder(versionedBaseUri)
             {
-                Query = pageQueryString
+                Query = GetQueryString(linkContainer.PageNumber + 1, linkContainer.PageSize)
             };
 
             var nextPageLink = GetLink(
@@ -143,6 +140,16 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         public bool ShouldAddNextPageLink(int pageNumber, int pageCount)
         {
             return pageNumber < pageCount;
+        }
+
+        public string GetQueryString(int pageNumber, int pageSize)
+        {
+            return string.Format(
+                QueryStringFormat,
+                Constants.CommonParameterNames.PageNumber,
+                pageNumber,
+                Constants.CommonParameterNames.PageSize,
+                pageSize);
         }
     }
 }

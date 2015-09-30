@@ -13,7 +13,7 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
     /// </summary>
     public class AllGamesProcessor : IAllGamesProcessor
     {
-        public const string QueryStringFormat = "pagenumber={0}&pagesize={1}";
+        
 
         private readonly IAutoMapper _autoMapper;
         private readonly ICommonLinkService _commonLinkService;
@@ -58,11 +58,7 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
         {
             inquiryResponse.AddLink(_gameLinkService.GetAllGamesLink());
 
-            _commonLinkService.AddPageLinks(
-                inquiryResponse, 
-                GetCurrentPageQueryString(inquiryResponse), 
-                GetPreviousPageQueryString(inquiryResponse), 
-                GetNextPageQueryString(inquiryResponse));
+            _commonLinkService.AddPageLinks(inquiryResponse);
         }
 
         public virtual IEnumerable<Game> GetGames(IEnumerable<Data.Entities.Game> gameEntities)
@@ -77,30 +73,6 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
             });
 
             return games;
-        }
-
-        public virtual string GetCurrentPageQueryString(PagedDataInquiryResponse<Game> inquiryResponse)
-        {
-            return string.Format(
-                QueryStringFormat, 
-                inquiryResponse.PageNumber, 
-                inquiryResponse.PageSize);
-        }
-
-        public virtual string GetPreviousPageQueryString(PagedDataInquiryResponse<Game> inquiryResponse)
-        {
-            return string.Format(
-                QueryStringFormat, 
-                inquiryResponse.PageNumber - 1, 
-                inquiryResponse.PageSize);
-        }
-
-        public virtual string GetNextPageQueryString(PagedDataInquiryResponse<Game> inquiryResponse)
-        {
-            return string.Format(
-                QueryStringFormat, 
-                inquiryResponse.PageNumber + 1, 
-                inquiryResponse.PageSize);
         }
     }
 }

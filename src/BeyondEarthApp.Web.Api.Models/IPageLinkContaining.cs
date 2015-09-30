@@ -5,5 +5,7 @@
         int PageNumber { get; set; }
 
         int PageCount { get; set; }
+
+        int PageSize { get; set; }
     }
 }
