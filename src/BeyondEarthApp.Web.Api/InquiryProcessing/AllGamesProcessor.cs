@@ -13,8 +13,6 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
     /// </summary>
     public class AllGamesProcessor : IAllGamesProcessor
     {
-        
-
         private readonly IAutoMapper _autoMapper;
         private readonly ICommonLinkService _commonLinkService;
         private readonly IAllGamesQueryProcessor _queryProcessor;

@@ -161,6 +161,7 @@
     <Compile Include="LinkServices\ICommonLinkService.cs" />
     <Compile Include="LinkServices\IFactionLinkService.cs" />
     <Compile Include="LinkServices\IGameLinkService.cs" />
+    <Compile Include="LinkServices\IStatusLinkService.cs" />
     <Compile Include="LinkServices\ITechnologyLinkService.cs" />
     <Compile Include="LinkServices\IUnitLinkService.cs" />
     <Compile Include="LinkServices\TechnologyLinkService.cs" />
