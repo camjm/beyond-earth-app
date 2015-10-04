@@ -166,6 +166,7 @@
     <Compile Include="LinkServices\IStatusLinkService.cs" />
     <Compile Include="LinkServices\ITechnologyLinkService.cs" />
     <Compile Include="LinkServices\IUnitLinkService.cs" />
+    <Compile Include="LinkServices\StatusLinkService.cs" />
     <Compile Include="LinkServices\TechnologyLinkService.cs" />
     <Compile Include="LinkServices\UnitLinkService.cs" />
     <Compile Include="MaintenanceProcessing\AddGameMaintenanceProcessor.cs" />
