@@ -22,21 +22,36 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             _unitLinkService = unitLinkService;
         }
 
-        public void AddSelfLink(Technology technology)
+        public void AddLinks(Technology technology)
         {
-            technology.AddLink(GetSelfLink(technology));
+            AddSelfLink(technology);
+            AddAllTechnologiesLink(technology);
+            AddTechnologyUnitsLink(technology);
+            AddTechnologyBuildingsLink(technology);
         }
 
-        public virtual Link GetSelfLink(Technology technology)
+        public virtual void AddSelfLink(Technology technology)
         {
-            var pathFragment = string.Format("{0}/{1}", PathFragmentBase, technology.TechnologyId);
+            technology.AddLink(GetSelfLink(technology.TechnologyId));
+        }
 
-            var link = _commonLinkService.GetLink(
-                pathFragment, 
-                Constants.CommonLinkRelValues.Self, 
-                HttpMethod.Get);
+        public virtual void AddAllTechnologiesLink(Technology technology)
+        {
+            technology.AddLink(GetAllTechnologiesLink());
+        }
 
-            return link;
+        public virtual void AddTechnologyUnitsLink(Technology technology)
+        {
+            var pathFragment = string.Format("{0}/{1}/units", PathFragmentBase, technology.TechnologyId);
+            var link = _commonLinkService.GetLink(pathFragment, "technologyUnits", HttpMethod.Get);
+            technology.AddLink(link);
+        }
+
+        public virtual void AddTechnologyBuildingsLink(Technology technology)
+        {
+            var pathFragment = string.Format("{0}/{1}/buildings", PathFragmentBase, technology.TechnologyId);
+            var link = _commonLinkService.GetLink(pathFragment, "technologyBuildings", HttpMethod.Get);
+            technology.AddLink(link);
         }
 
         public void AddLinksToChildren(Technology technology)
@@ -45,7 +60,16 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             technology.Buildings.ForEach(x => _buildingLinkService.AddSelfLink(x));
         }
 
-        public Link GetAllTechnologiesLink()
+        public virtual Link GetSelfLink(long technologyId)
+        {
+            var pathFragment = string.Format("{0}/{1}", PathFragmentBase, technologyId);
+            return _commonLinkService.GetLink(
+                pathFragment,
+                Constants.CommonLinkRelValues.Self,
+                HttpMethod.Get);
+        }
+
+        public virtual Link GetAllTechnologiesLink()
         {
             return _commonLinkService.GetLink(
                 PathFragmentBase,
