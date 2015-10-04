@@ -153,6 +153,7 @@
     <Compile Include="InquiryProcessing\ITechnologyByIdProcessor.cs" />
     <Compile Include="InquiryProcessing\PagedDataRequestFactory.cs" />
     <Compile Include="InquiryProcessing\TechnologyByIdProcessor.cs" />
+    <Compile Include="LinkServices\AffinityLinkService.cs" />
     <Compile Include="LinkServices\BuildingLinkService.cs" />
     <Compile Include="LinkServices\CommonLinkService.cs" />
     <Compile Include="LinkServices\FactionLinkService.cs" />

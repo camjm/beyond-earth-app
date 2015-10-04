@@ -28,6 +28,7 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             AddAllTechnologiesLink(technology);
             AddTechnologyUnitsLink(technology);
             AddTechnologyBuildingsLink(technology);
+            AddLinksToChildren(technology);
         }
 
         public virtual void AddSelfLink(Technology technology)
