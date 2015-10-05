@@ -9,9 +9,10 @@ namespace BeyondEarthApp.Web.Api.AutoMappingConfiguration.EntityToService
         public void Configure(IAutoMapper mapper)
         {
             mapper.CreateMap<Technology, Models.Technology>()
-                .ForMember(opt => opt.Links, x => x.Ignore())
-                .ForMember(opt => opt.Buildings, x => x.ResolveUsing<TechnologyBuildingsResolver>())
-                .ForMember(opt => opt.Units, x => x.ResolveUsing<TechnologyUnitsResolver>());
+                .ForMember(x => x.Links, opt => opt.Ignore())
+                .ForMember(x => x.Units, opt => opt.ResolveUsing<TechnologyUnitsResolver>())
+                .ForMember(x => x.Buildings, opt => opt.ResolveUsing<TechnologyBuildingsResolver>())
+                .ForMember(x => x.TechnologyAffinities, opt => opt.ResolveUsing<TechnologyAffinitiesResolver>());
         }
     }
 }
