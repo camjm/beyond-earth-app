@@ -125,6 +125,7 @@
     <Compile Include="AutoMappingConfiguration\EntityToService\UserConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\GameTechnologyResolver.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\ListValueResolver.cs" />
+    <Compile Include="AutoMappingConfiguration\Resolvers\TechnologyAffinitiesResolver.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\TechnologyBuildingsResolver.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\TechnologyConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\TechnologyUnitsResolver.cs" />
@@ -143,12 +144,15 @@
     <Compile Include="Controllers\V1\GamesController.cs" />
     <Compile Include="Controllers\V1\GameTechnologiesController.cs" />
     <Compile Include="Controllers\V1\GameWorkflowController.cs" />
+    <Compile Include="Controllers\V1\StatusesController.cs" />
     <Compile Include="Controllers\V1\TechnologiesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InquiryProcessing\AllGamesProcessor.cs" />
+    <Compile Include="InquiryProcessing\AllStatusesProcessor.cs" />
     <Compile Include="InquiryProcessing\IAllGamesProcessor.cs" />
+    <Compile Include="InquiryProcessing\IAllStatusesProcessor.cs" />
     <Compile Include="InquiryProcessing\IPagedDataRequestFactory.cs" />
     <Compile Include="InquiryProcessing\ITechnologyByIdProcessor.cs" />
     <Compile Include="InquiryProcessing\PagedDataRequestFactory.cs" />

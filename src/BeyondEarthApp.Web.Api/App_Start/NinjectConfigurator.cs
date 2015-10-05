@@ -106,10 +106,15 @@ namespace BeyondEarthApp.Web.Api
                 .To<UpdateGameQueryProcessor>()
                 .InRequestScope();
 
-            // Paged
+            // All
             container
                 .Bind<IAllGamesQueryProcessor>()
                 .To<AllGamesQueryProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IAllStatusesQueryProcessor>()
+                .To<AllStatusesQueryProcessor>()
                 .InRequestScope();
         }
 
@@ -167,10 +172,15 @@ namespace BeyondEarthApp.Web.Api
                 .To<TechnologyByIdProcessor>()
                 .InRequestScope();
 
-            // Paged
+            // All
             container
                 .Bind<IAllGamesProcessor>()
                 .To<AllGamesProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IAllStatusesProcessor>()
+                .To<AllStatusesProcessor>()
                 .InRequestScope();
         }
 
@@ -204,6 +214,16 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<IUnitLinkService>()
                 .To<UnitLinkService>()
+                .InRequestScope();
+
+            container
+                .Bind<IAffinityLinkService>()
+                .To<AffinityLinkService>()
+                .InRequestScope();
+
+            container
+                .Bind<IStatusLinkService>()
+                .To<StatusLinkService>()
                 .InRequestScope();
         }
 

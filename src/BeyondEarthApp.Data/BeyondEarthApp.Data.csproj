@@ -57,6 +57,7 @@
     <Compile Include="QueryProcessors\IAddGameQueryProcessor.cs" />
     <Compile Include="QueryProcessors\IAddTechnologyQueryProcessor.cs" />
     <Compile Include="QueryProcessors\IAllGamesQueryProcessor.cs" />
+    <Compile Include="QueryProcessors\IAllStatusesQueryProcessor.cs" />
     <Compile Include="QueryProcessors\IGameByIdQueryProcessor.cs" />
     <Compile Include="QueryProcessors\ITechnologyByIdQueryProcessor.cs" />
     <Compile Include="QueryProcessors\IUpdateGameQueryProcessor.cs" />
