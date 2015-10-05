@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BeyondEarthApp.Web.Api.Models
+namespace BeyondEarthApp.Web.Api.Models.Initial
 {
     public class NewGame
     {

@@ -3,6 +3,7 @@ using BeyondEarthApp.Common;
 using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Initial;
 
 namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
 {

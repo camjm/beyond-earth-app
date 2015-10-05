@@ -1,5 +1,6 @@
 ﻿using BeyondEarthApp.Data;
 using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Paging;
 
 namespace BeyondEarthApp.Web.Api.InquiryProcessing
 {

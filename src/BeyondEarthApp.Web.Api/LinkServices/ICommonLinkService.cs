@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Paging;
 
 namespace BeyondEarthApp.Web.Api.LinkServices
 {

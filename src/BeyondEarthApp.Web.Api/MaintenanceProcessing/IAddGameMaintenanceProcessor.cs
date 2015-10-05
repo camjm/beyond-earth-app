@@ -1,4 +1,5 @@
 ﻿using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Initial;
 
 namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
 {

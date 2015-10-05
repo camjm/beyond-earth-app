@@ -2,6 +2,7 @@
 using System.Net.Http;
 using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Paging;
 using BeyondEarthApp.Web.Common.Extensions;
 using BeyondEarthApp.Web.Common.Security;
 

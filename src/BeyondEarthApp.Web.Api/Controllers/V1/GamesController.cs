@@ -4,6 +4,8 @@ using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.InquiryProcessing;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing;
 using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Initial;
+using BeyondEarthApp.Web.Api.Models.Paging;
 using BeyondEarthApp.Web.Common;
 using BeyondEarthApp.Web.Common.Routing;
 using BeyondEarthApp.Web.Common.Validation;

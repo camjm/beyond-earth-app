@@ -5,6 +5,7 @@ using BeyondEarthApp.Data;
 using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Web.Api.LinkServices;
 using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Paging;
 
 namespace BeyondEarthApp.Web.Api.InquiryProcessing
 {

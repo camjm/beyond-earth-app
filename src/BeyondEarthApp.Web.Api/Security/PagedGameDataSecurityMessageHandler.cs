@@ -5,6 +5,7 @@ using BeyondEarthApp.Common;
 using BeyondEarthApp.Common.Logging;
 using BeyondEarthApp.Common.Security;
 using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Paging;
 using log4net;
 
 namespace BeyondEarthApp.Web.Api.Security

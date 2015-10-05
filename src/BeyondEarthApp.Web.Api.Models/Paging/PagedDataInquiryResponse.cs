@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BeyondEarthApp.Web.Api.Models
+namespace BeyondEarthApp.Web.Api.Models.Paging
 {
     /// <summary>
     /// Data transfer object (DTO) that can return type-safe paged data and relevant hypermedia links

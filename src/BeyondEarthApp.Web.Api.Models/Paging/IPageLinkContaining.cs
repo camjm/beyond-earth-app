@@ -1,4 +1,4 @@
-﻿namespace BeyondEarthApp.Web.Api.Models
+﻿namespace BeyondEarthApp.Web.Api.Models.Paging
 {
     public interface IPageLinkContaining : ILinkContaining
     {

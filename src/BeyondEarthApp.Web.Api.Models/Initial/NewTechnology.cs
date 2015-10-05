@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BeyondEarthApp.Web.Api.Models
+namespace BeyondEarthApp.Web.Api.Models.Initial
 {
     public class NewTechnology
     {
