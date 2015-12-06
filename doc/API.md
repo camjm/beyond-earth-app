@@ -2,45 +2,71 @@
 
 ## API Service Design
 
-### Released
+### Game Operations
+|URI   										                |Verb 		|Description																				                                        |Role      |Status     |
+|---------------------------------------- |---------|-------------------------------------------------------------------------------------------|----------|-----------|
+|/api/games                               |GET      |                                                                                           |User      |Done       |
+|/api/games/123                           |GET      |                                                                                           |User      |Done       |
+|/api/games/123                           |PUT/PATCH|                                                                                           |User      |Done       |
+|/api/games                               |POST     |                                                                                           |User      |Done       |
+|/api/games/123/activations               |POST     |                                                                                           |User      |Done       |
+|/api/games/123/completions               |POST     |                                                                                           |User      |Done       |
+|/api/games/123/reactivations             |POST     |                                                                                           |User      |Done       |
+|/api/games/123/technologies              |PUT      |                                                                                           |User      |Done       |
+|/api/games/123/technologies              |DELETE   |                                                                                           |User      |Done       |
+|/api/games/123/technologies/456          |PUT      |                                                                                           |User      |Done       |
+|/api/games/123/technologies/456          |DELETE   |                                                                                           |User      |Done       |
 
-#### Technology Operations
-|URI 										|Verb 		|Description																				|
-|-------------------------------------------|-----------|-------------------------------------------------------------------------------------------|
-|/api/technologies							|GET		|Gets the full list of technologies. Filter by URL query string arguments.					|
-|/api/technologies							|POST		|Creates a new technology. Returns the new technology.										|
-|/api/technologies/123						|GET		|Gets the details for the specified technology.												|
-|/api/technologies/123						|PUT		|Updates the specified technology. Returns the updated technology.							|
-|/api/technologies/123/buildings			|GET 		|Gets the buildings of the specified technology.											|
-|/api/technologies/123/buildings			|PUT		|Replaces all buildings of the specified technology. Returns the updated technology.		|
-|/api/technoligies/123/buildings			|DELETE		|Deletes all buildings from the specified technology. Returns the updated technology.		|
-|/api/technoligies/123/buildings/456		|PUT		|Adds the specified building to the technology. Returns the updated technology.				|
-|/api/technoligies/123/buildings/456		|DELETE		|Deletes the specified building from the technology. Returns the updated technology.		|
-|/api/technologies/123/units				|GET 		|Gets the units of the specified technology.												|
-|/api/technologies/123/units				|PUT		|Replaces all units of the specified technology. Returns the updated technology.			|
-|/api/technoligies/123/units				|DELETE		|Deletes all units from the specified technology. Returns the updated technology.			|
-|/api/technoligies/123/units/456			|PUT		|Adds the specified units to the technology. Returns the updated technology.				|
-|/api/technoligies/123/units/456			|DELETE		|Deletes the specified units from the technology. Returns the updated technology.			|
+### Affinity Operations
+|URI   										                |Verb 		|Description																				                                        |Role      |Status     |
+|---------------------------------------- |---------|-------------------------------------------------------------------------------------------|----------|-----------|
+|/api/affinities                          |GET      |                                                                                           |User      |TO DO      |
+|/api/affinities/123                      |GET      |                                                                                           |User      |TO DO      |
+|/api/affinities/123/bonuses              |GET      |                                                                                           |User      |Not Sure   |
+|/api/affinities/123/technologies         |GET      |                                                                                           |User      |Not Sure   |
 
-#### Building Operations
-|URI 										|Verb 		|Description																				|
-|-------------------------------------------|-----------|-------------------------------------------------------------------------------------------|
-|/api/buildings								|GET		|Gets the full list of buildings. Filter by URL query string arguments.						|
-|/api/buildings								|POST		|Creates a new building. Returns the new building.											|
-|/api/buildings/123							|GET		|Gets the details for the specified building.												|
-|/api/buildings/123							|PUT		|Updates the specified building. Returns the updated building.								|
+### Status Operations
+|URI   										                |Verb 		|Description																				                                        |Role      |Status     |
+|---------------------------------------- |---------|-------------------------------------------------------------------------------------------|----------|-----------|
+|/api/statuses                            |GET      |                                                                                           |User      |TO DO      |
 
-#### Unit Operations
-|URI 										|Verb 		|Description																				|
-|-------------------------------------------|-----------|-------------------------------------------------------------------------------------------|
-|/api/units									|GET		|Gets the full list of units. Filter by URL query string arguments.							|
-|/api/units									|POST		|Creates a new unit. Returns the new unit.													|
-|/api/units/123								|GET		|Gets the details for the specified unit.													|
-|/api/units/123								|PUT		|Updates the specified unit. Returns the updated unit.										|
+### Technology Operations
+|URI   										                |Verb 		|Description																				                                        |Role      |Status     |
+|---------------------------------------- |---------|-------------------------------------------------------------------------------------------|----------|-----------|
+|/api/technologies							          |GET		  |Gets the full list of technologies. Filter by URL query string arguments.					        | | |
+|/api/technologies						         	  |POST		  |Creates a new technology. Returns the new technology.										                  | | |
+|/api/technologies/123						        |GET		  |Gets the details for the specified technology.												                      | | |
+|/api/technologies/123						        |PUT		  |Updates the specified technology. Returns the updated technology.							            | | |
+|/api/technologies/123/buildings			    |GET 		  |Gets the buildings of the specified technology.											                      | | |
+|/api/technologies/123/buildings			    |PUT		  |Replaces all buildings of the specified technology. Returns the updated technology.		    | | |
+|/api/technoligies/123/buildings			    |DELETE		|Deletes all buildings from the specified technology. Returns the updated technology.		    | | |
+|/api/technoligies/123/buildings/456		  |PUT		  |Adds the specified building to the technology. Returns the updated technology.				      | | |
+|/api/technoligies/123/buildings/456		  |DELETE		|Deletes the specified building from the technology. Returns the updated technology.		    | | |
+|/api/technologies/123/units				      |GET 		  |Gets the units of the specified technology.												                        | | |
+|/api/technologies/123/units				      |PUT		  |Replaces all units of the specified technology. Returns the updated technology.			      | | |
+|/api/technoligies/123/units				      |DELETE		|Deletes all units from the specified technology. Returns the updated technology.			      | | |
+|/api/technoligies/123/units/456			    |PUT		  |Adds the specified units to the technology. Returns the updated technology.				        | | |
+|/api/technoligies/123/units/456			    |DELETE		|Deletes the specified units from the technology. Returns the updated technology.			      | | |
 
-### In Development
+### Building Operations
+|URI 										                  |Verb     |Description																				                                        |Role      |Status     |
+|-----------------------------------------|---------|-------------------------------------------------------------------------------------------|----------|-----------|
+|/api/buildings								            |GET	  	|Gets the full list of buildings. Filter by URL query string arguments.						          |User      |To Do      |
+|/api/buildings/123							          |GET		  |Gets the details for the specified building.												                        |User      |To Do      |
+|/api/buildings								            |POST	   	|Creates a new building. Returns the new building.											                    |Admin     |To Do      |
+|/api/buildings								            |DELETE  	|                                                  											                    |Admin     |To Do      |
+|/api/buildings/123							          |PUT		  |Updates the specified building. Returns the updated building.								              |Admin     |To Do      |
+|/api/buildings/123							          |DELETE	  |                                                             								              |Admin     |To Do      |
 
-#### Affinities
+### Unit Operations
+|URI 										                  |Verb 		|Description																				                                        |Role      |Status     |
+|-----------------------------------------|---------|-------------------------------------------------------------------------------------------|----------|-----------|
+|/api/units									              |GET  		|Gets the full list of units. Filter by URL query string arguments.							            |User      |To Do      |
+|/api/units/123								            |GET		  |Gets the details for the specified unit.													                          |User      |To Do      |
+|/api/units             									|POST		  |Creates a new unit. Returns the new unit.													                        |Admin     |To Do      |
+|/api/units             									|DELETE	  |                                                      							                        |Admin     |To Do      |
+|/api/units/123           								|PUT  		|Updates the specified unit. Returns the updated unit.										                  |Admin     |To Do      |
+|/api/units/123           								|DELETE  	|                                                     										                  |Admin     |To Do      |
 
 
 ## REST Architecture
