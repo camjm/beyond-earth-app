@@ -6,24 +6,24 @@
 |URI   										                |Verb 		|Description																				                                        |Role      |Status     |
 |---------------------------------------- |---------|-------------------------------------------------------------------------------------------|----------|-----------|
 |/api/games                               |GET      |Gets the full list of games. Filter by URL query string arguments.                         |User      |Done       |
-|/api/games/123                           |GET      |                                                                                           |User      |Done       |
-|/api/games/123                           |PUT/PATCH|                                                                                           |User      |Done       |
-|/api/games                               |POST     |                                                                                           |User      |Done       |
-|/api/games/123/activations               |POST     |                                                                                           |User      |Done       |
-|/api/games/123/completions               |POST     |                                                                                           |User      |Done       |
-|/api/games/123/reactivations             |POST     |                                                                                           |User      |Done       |
-|/api/games/123/technologies              |PUT      |                                                                                           |User      |Done       |
-|/api/games/123/technologies              |DELETE   |                                                                                           |User      |Done       |
-|/api/games/123/technologies/456          |PUT      |                                                                                           |User      |Done       |
-|/api/games/123/technologies/456          |DELETE   |                                                                                           |User      |Done       |
+|/api/games/123                           |GET      |Gets the details for the specified games.	                                                |User      |Done       |
+|/api/games/123                           |PUT/PATCH|Updates the specified game. Returns the updated game.	                                    |User      |Done       |
+|/api/games                               |POST     |Creates a new game. Returns the new game.            	                                    |User      |Done       |
+|/api/games/123/activations               |POST     |Starts the specified game. Returns the updated game.                                       |User      |Done       |
+|/api/games/123/completions               |POST     |Completes the specified game. Returns the updated game.                                    |User      |Done       |
+|/api/games/123/reactivations             |POST     |Restarts the specified game. Returns the updated game.                                     |User      |Done       |
+|/api/games/123/technologies              |PUT      |Replaces all technologies of the specified game. Returns the updated game.                 |User      |Done       |
+|/api/games/123/technologies              |DELETE   |Deletes all technologies from the specified game. Returns the updated game.                |User      |Done       |
+|/api/games/123/technologies/456          |PUT      |Adds the specified technology to the game. Returns the updated game.         	            |User      |Done       |
+|/api/games/123/technologies/456          |DELETE   |Deletes the specified technology from the game. Returns the updated game.                  |User      |Done       |
 
 ### Affinity Operations
 |URI   										                |Verb 		|Description																				                                        |Role      |Status     |
 |---------------------------------------- |---------|-------------------------------------------------------------------------------------------|----------|-----------|
 |/api/affinities                          |GET      |Gets the full list of affinities. Filter by URL query string arguments.                    |User      |To Do      |
-|/api/affinities/123                      |GET      |                                                                                           |User      |To Do      |
-|/api/affinities/123/bonuses              |GET      |                                                                                           |User      |Unconfirmed|
-|/api/affinities/123/technologies         |GET      |                                                                                           |User      |Unconfirmed|
+|/api/affinities/123                      |GET      |Gets the details for the specified affinity.                     		                      |User      |To Do      |
+|/api/affinities/123/bonuses              |GET      |Gets the bonuses of the specified affinity.	                                              |User      |Unconfirmed|
+|/api/affinities/123/technologies         |GET      |Gets the technologies of the specified affinity.	                                          |User      |Unconfirmed|
 
 ### Status Operations
 |URI   										                |Verb 		|Description																				                                        |Role      |Status     |
