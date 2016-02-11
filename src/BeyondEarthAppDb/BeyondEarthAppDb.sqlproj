@@ -67,7 +67,6 @@
     <None Include="Scripts\FactionData.sql" />
     <None Include="Scripts\TestData.sql" />
     <None Include="Scripts\StatusData.sql" />
-    <None Include="BeyondEarthAppDb.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
