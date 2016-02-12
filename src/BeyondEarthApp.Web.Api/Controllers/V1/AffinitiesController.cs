@@ -5,7 +5,7 @@ using BeyondEarthApp.Web.Common.Routing;
 
 namespace BeyondEarthApp.Web.Api.Controllers.V1
 {
-    [ApiVersion1RoutePrefix("games")]
+    [ApiVersion1RoutePrefix("affinities")]
     public class AffinitiesController : ApiController
     {
         [Route("{affinityId:long}", Name = "GetAffinityRoute")]
