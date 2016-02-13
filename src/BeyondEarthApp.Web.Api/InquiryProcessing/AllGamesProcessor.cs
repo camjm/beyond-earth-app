@@ -45,11 +45,15 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
                 PageSize = queryResult.PageSize
             };
 
-            // add the relevant hypermedia links
-            AddLinksToInquiryResponse(inquiryResponse);
+            if (!requestInfo.ExcludeLinks)
+            {
+                // add the relevant hypermedia links
+                AddLinksToInquiryResponse(inquiryResponse);
+            }
 
             return inquiryResponse;
         }
+
         /// <summary>
         /// Adds Links at the Root (page) level, the Game level, and the Child level (Faction and Technologies)
         /// </summary>

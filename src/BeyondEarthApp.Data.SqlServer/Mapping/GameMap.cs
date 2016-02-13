@@ -13,6 +13,7 @@ namespace BeyondEarthApp.Data.SqlServer.Mapping
             Map(x => x.StartDate).Nullable();
 
             References(x => x.User, "UserId");
+            References(x => x.Status, "StatusId");
             References(x => x.Faction, "FactionId");
 
             HasManyToMany(x => x.Technologies)
