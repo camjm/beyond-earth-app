@@ -7,6 +7,7 @@
 	[FactionId]		BIGINT			NOT NULL,
 	[CreatedDate]	DATETIME2 (7)	NOT NULL,
 	[StartDate]		DATETIME2 (7)	NULL,
+	[CompletedDate]	DATETIME2 (7)	NULL,
 	[ts]			ROWVERSION		NOT NULL,
 	PRIMARY KEY CLUSTERED ([GameId] ASC),
 	FOREIGN KEY ([StatusId]) REFERENCES [dbo].[Status] ([StatusId]),

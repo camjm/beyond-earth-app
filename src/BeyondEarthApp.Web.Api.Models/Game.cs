@@ -22,6 +22,9 @@ namespace BeyondEarthApp.Web.Api.Models
         public DateTime? StartDate { get; set; }
 
         [Editable(false)]
+        public DateTime? CompletedDate { get; set; }
+
+        [Editable(false)]
         public Status Status { get; set; }
 
         [Editable(false)]

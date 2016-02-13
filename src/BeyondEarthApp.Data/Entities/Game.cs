@@ -13,6 +13,8 @@ namespace BeyondEarthApp.Data.Entities
 
         public virtual DateTime? StartDate { get; set; }
 
+        public virtual DateTime? CompletedDate { get; set; }
+
         public virtual Status Status { get; set; }
 
         public virtual User User { get; set; }

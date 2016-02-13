@@ -2,6 +2,7 @@
 using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Data.Exceptions;
 using BeyondEarthApp.Data.QueryProcessors;
+using BeyondEarthApp.Web.Api.LinkServices;
 using BeyondEarthApp.Web.Api.Models;
 
 namespace BeyondEarthApp.Web.Api.MaintenanceProcessing.Workflow
@@ -10,17 +11,20 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing.Workflow
     {
         private readonly IDateTime _dateTime;
         private readonly IAutoMapper _autoMapper;
+        private readonly IGameLinkService _gameLinkService;
         private readonly IGameByIdQueryProcessor _gameByIdQueryProcessor;
         private readonly IUpdateGameStatusQueryProcessor _updateGameStatusQueryProcessor;
 
         public CompleteGameProcessor(
             IDateTime dateTime, 
             IAutoMapper autoMapper, 
+            IGameLinkService gameLinkService,
             IGameByIdQueryProcessor gameByIdQueryProcessor, 
             IUpdateGameStatusQueryProcessor updateGameStatusQueryProcessor)
         {
             _dateTime = dateTime;
             _autoMapper = autoMapper;
+            _gameLinkService = gameLinkService;
             _gameByIdQueryProcessor = gameByIdQueryProcessor;
             _updateGameStatusQueryProcessor = updateGameStatusQueryProcessor;
         }
@@ -40,11 +44,13 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing.Workflow
                 throw new BusinessRuleViolationException("Incorrect game status. Expected status of 'In Progress'.");
             }
 
-            //gameEntity.CompletedDate = _dateTime.UtcNow;
+            gameEntity.CompletedDate = _dateTime.UtcNow;
 
             _updateGameStatusQueryProcessor.UpdateGameStatus(gameEntity, "Completed");
 
             var game = _autoMapper.Map<Game>(gameEntity);
+
+            _gameLinkService.AddLinks(game);
 
             return game;
         }

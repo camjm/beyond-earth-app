@@ -11,6 +11,7 @@ namespace BeyondEarthApp.Data.SqlServer.Mapping
             Map(x => x.Description).Nullable();
             Map(x => x.CreatedDate).Not.Nullable();
             Map(x => x.StartDate).Nullable();
+            Map(x => x.CompletedDate).Nullable();
 
             References(x => x.User, "UserId");
             References(x => x.Status, "StatusId");

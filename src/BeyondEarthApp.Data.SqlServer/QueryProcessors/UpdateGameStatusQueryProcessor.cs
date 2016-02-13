@@ -16,6 +16,7 @@ namespace BeyondEarthApp.Data.SqlServer.QueryProcessors
         public void UpdateGameStatus(Game gameToUpdate, string statusName)
         {
             var status = _session.QueryOver<Status>().Where(x => x.Name == statusName).SingleOrDefault();
+            
             gameToUpdate.Status = status;
 
             _session.SaveOrUpdate(gameToUpdate);
