@@ -106,6 +106,12 @@ namespace BeyondEarthApp.Web.Api
                 .To<UpdateGameQueryProcessor>()
                 .InRequestScope();
 
+            // Delete
+            container
+                .Bind<IDeleteGameQueryProcessor>()
+                .To<DeleteGameQueryProcessor>()
+                .InRequestScope();
+
             // All
             container
                 .Bind<IAllGamesQueryProcessor>()

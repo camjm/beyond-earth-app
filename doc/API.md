@@ -8,6 +8,7 @@
 |/api/games                               |GET      |Gets the full list of games. Filter by URL query string arguments.                         |User      |Done       |
 |/api/games/123                           |GET      |Gets the details for the specified games.	                                                |User      |Done       |
 |/api/games/123                           |PUT/PATCH|Updates the specified game. Returns the updated game.	                                    |User      |Done       |
+|/api/games/123                           |DELETE   |Deletes the specified game.                                                                |User      |Done       |
 |/api/games                               |POST     |Creates a new game. Returns the new game.            	                                    |User      |Done       |
 |/api/games/123/activations               |POST     |Starts the specified game. Returns the updated game.                                       |User      |Done       |
 |/api/games/123/completions               |POST     |Completes the specified game. Returns the updated game.                                    |User      |Done       |

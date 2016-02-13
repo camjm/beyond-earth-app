@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Web.Http;
 using BeyondEarthApp.Common;
+using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Web.Api.InquiryProcessing;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing;
 using BeyondEarthApp.Web.Api.Models;
@@ -20,6 +21,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
         private readonly IPagedDataRequestFactory _pagedDataRequestFactory;
         private readonly IUpdateGameMaintenanceProcessor _updateGameMaintenanceProcessor;
         private readonly IAddGameMaintenanceProcessor _addGameMaintenanceProcessor;
+        private readonly IDeleteGameQueryProcessor _deleteGameQueryProcessor;
         private readonly IGameByIdProcessor _gameByIdProcessor;
         private readonly IAllGamesProcessor _allGamesProcessor;
 
@@ -27,12 +29,14 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
             IPagedDataRequestFactory pagedDataRequestFactory,
             IUpdateGameMaintenanceProcessor updateGameMaintenanceProcessor,
             IAddGameMaintenanceProcessor addGameMaintenanceProcessor, 
+            IDeleteGameQueryProcessor deleteGameQueryProcessor,
             IGameByIdProcessor gameByIdProcessor,
             IAllGamesProcessor allGamesProcessor)
         {
             _pagedDataRequestFactory = pagedDataRequestFactory;
             _updateGameMaintenanceProcessor = updateGameMaintenanceProcessor;
             _addGameMaintenanceProcessor = addGameMaintenanceProcessor;
+            _deleteGameQueryProcessor = deleteGameQueryProcessor;
             _gameByIdProcessor = gameByIdProcessor;
             _allGamesProcessor = allGamesProcessor;
         }
@@ -75,6 +79,14 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
             // If ASP.NET Web API model binding was used, we wouldn't know what the caller wanted to partially update.
             var game = _updateGameMaintenanceProcessor.UpdateGame(id, updatedGame);
             return game;
+        }
+
+        [HttpDelete]
+        [Route("{id:long}", Name = "DeleteGameRoute")]
+        public IHttpActionResult DeleteGame(long id)
+        {
+            _deleteGameQueryProcessor.DeleteGame(id);
+            return Ok();
         }
     }
 }
