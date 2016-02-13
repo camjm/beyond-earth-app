@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Data.QueryProcessors;
+using BeyondEarthApp.Web.Api.LinkServices;
 using BeyondEarthApp.Web.Api.Models;
 using BeyondEarthApp.Web.Common;
 using Newtonsoft.Json.Linq;
@@ -14,16 +15,19 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
     public class UpdateGameMaintenanceProcessor : IUpdateGameMaintenanceProcessor
     {
         private readonly IAutoMapper _autoMapper;
+        private readonly IGameLinkService _gameLinkService;
         private readonly IUpdateGameQueryProcessor _queryProcessor;
         private readonly IUpdateablePropertyDetector _updateablePropertyDetector;
 
         public UpdateGameMaintenanceProcessor(
             IAutoMapper autoMapper, 
+            IGameLinkService gameLinkService,
             IUpdateGameQueryProcessor queryProcessor, 
             IUpdateablePropertyDetector updateablePropertyDetector)
         {
             _autoMapper = autoMapper;
             _queryProcessor = queryProcessor;
+            _gameLinkService = gameLinkService;
             _updateablePropertyDetector = updateablePropertyDetector;
         }
 
@@ -45,6 +49,8 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
 
             // map Game entity to the service model object
             var game = _autoMapper.Map<Game>(updatedGameEntity);
+
+            _gameLinkService.AddLinks(game);
 
             return game;
         }
