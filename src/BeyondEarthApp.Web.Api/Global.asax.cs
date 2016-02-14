@@ -3,6 +3,7 @@ using BeyondEarthApp.Common.Logging;
 using BeyondEarthApp.Common.Security;
 using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Web.Api.Security;
+using BeyondEarthApp.Web.Api.Security.DataMasking;
 using BeyondEarthApp.Web.Common;
 
 namespace BeyondEarthApp.Web.Api
@@ -30,8 +31,9 @@ namespace BeyondEarthApp.Web.Api
             var securityService = WebContainerManager.Get<IBasicSecurityService>();
 
             GlobalConfiguration.Configuration.MessageHandlers.Add(new BasicAuthenticationMessageHandler(logManager, securityService));
-            GlobalConfiguration.Configuration.MessageHandlers.Add(new UserDataSecurityMessageHandler(logManager, userSession));
-            GlobalConfiguration.Configuration.MessageHandlers.Add(new PagedGameDataSecurityMessageHandler(logManager, userSession));
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new UserMessageHandler(logManager, userSession));
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new GamePagedMessageHandler(logManager, userSession));
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new GameMessageHandler(logManager, userSession));
         }
 
         /// <summary>

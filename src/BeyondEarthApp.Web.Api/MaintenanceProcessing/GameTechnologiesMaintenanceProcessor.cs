@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Data.QueryProcessors;
+using BeyondEarthApp.Web.Api.LinkServices;
 using BeyondEarthApp.Web.Api.Models;
 
 namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
@@ -8,14 +9,17 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
     public class GameTechnologiesMaintenanceProcessor : IGameTechnologiesMaintenceProcessor
     {
         private readonly IAutoMapper _autoMapper;
+        private readonly IGameLinkService _gameLinkService;
         private readonly IUpdateGameQueryProcessor _queryProcessor;
 
         public GameTechnologiesMaintenanceProcessor(
             IAutoMapper autoMapper, 
+            IGameLinkService gameLinkService,
             IUpdateGameQueryProcessor queryProcessor)
         {
             _autoMapper = autoMapper;
             _queryProcessor = queryProcessor;
+            _gameLinkService = gameLinkService;
         }
 
         public Game ReplaceGameTechnologies(long gameId, IEnumerable<long> technologyIds)
@@ -49,6 +53,8 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
         public virtual Game CreateGameResponse(Data.Entities.Game gameEntity)
         {
             var game = _autoMapper.Map<Game>(gameEntity);
+
+            _gameLinkService.AddLinks(game);
 
             return game;
         }

@@ -115,7 +115,7 @@ namespace BeyondEarthApp.Data.SqlServer.QueryProcessors
         /// </summary>
         public virtual void UpdateGameTechnologies(Game game, IEnumerable<long> technologyIds, bool appendToExisting)
         {
-            if (appendToExisting)
+            if (!appendToExisting)
             {
                 game.Technologies.Clear();
             }
