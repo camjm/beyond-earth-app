@@ -5,6 +5,10 @@ namespace BeyondEarthApp.Web.Api.Models.Precis
 {
     public class TechnologyPrecis : ILinkContaining
     {
+        public string Name { get; set; }
+
+        public int Cost { get; set; }
+
         #region Links
 
         private List<Link> _links;
