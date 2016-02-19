@@ -55,6 +55,8 @@
     <Compile Include="Initial\NewTechnology.cs" />
     <Compile Include="Initial\NewUnit.cs" />
     <Compile Include="Paging\PagedDataInquiryResponse.cs" />
+    <Compile Include="Precis\GamePrecis.cs" />
+    <Compile Include="Precis\TechnologyPrecis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Technology.cs" />
