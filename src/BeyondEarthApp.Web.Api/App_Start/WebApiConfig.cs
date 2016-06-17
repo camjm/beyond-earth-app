@@ -17,6 +17,8 @@ namespace BeyondEarthApp.Web.Api
             var constraintResolver = new DefaultInlineConstraintResolver();
             constraintResolver.ConstraintMap.Add("apiVersionConstraint", typeof(ApiVersionConstraint));
 
+            config.EnableCors();
+
             config.MapHttpAttributeRoutes(constraintResolver);
 
             // Register custom implementations with the framework
