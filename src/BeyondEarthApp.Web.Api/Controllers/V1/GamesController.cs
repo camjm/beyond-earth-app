@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using BeyondEarthApp.Common;
 using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Web.Api.InquiryProcessing;
@@ -16,6 +17,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
     [ApiVersion1RoutePrefix("games")]
     [UnitOfWorkActionFilter]
     [Authorize(Roles = Constants.RoleNames.User)]
+    [EnableCors("http://127.0.0.1:8080", "*", "*")]
     public class GamesController : ApiController
     {
         private readonly IPagedDataRequestFactory _pagedDataRequestFactory;
