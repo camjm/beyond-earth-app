@@ -87,12 +87,12 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<IGameByIdQueryProcessor>()
                 .To<GameByIdQueryProcessor>()
-                .InSingletonScope();
+                .InRequestScope();
 
             container
                 .Bind<ITechnologyByIdQueryProcessor>()
                 .To<TechnologyByIdQueryProcessor>()
-                .InSingletonScope();
+                .InRequestScope();
 
 
             // Update
