@@ -22,6 +22,7 @@ using Ninject.Activation;
 using Ninject.Web.Common;
 using EntityToService = BeyondEarthApp.Web.Api.AutoMappingConfiguration.EntityToService;
 using ServiceToEntity = BeyondEarthApp.Web.Api.AutoMappingConfiguration.ServiceToEntity;
+using Precis = BeyondEarthApp.Web.Api.AutoMappingConfiguration.Precis;
 
 namespace BeyondEarthApp.Web.Api
 {
@@ -259,6 +260,9 @@ namespace BeyondEarthApp.Web.Api
             MapConfigurator<ServiceToEntity.NewGameConfigurator>(container);
             MapConfigurator<ServiceToEntity.GameConfigurator>(container);
             MapConfigurator<ServiceToEntity.UserConfigurator>(container);
+
+            // Map Entity to Precis Service
+            MapConfigurator<Precis.GameConfigurator>(container);
         }
 
         private void MapConfigurator<T>(IKernel container) where T : IAutoMapperTypeConfigurator
