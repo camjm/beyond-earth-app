@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BeyondEarthApp.Data.Entities;
 
 namespace BeyondEarthApp.Data.QueryProcessors
 {
-    interface IBuildingByIdQueryProcessor
+    public interface IBuildingByIdQueryProcessor
     {
+        Building GetBuilding(long buildingId);
     }
 }

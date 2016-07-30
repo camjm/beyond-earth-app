@@ -5,6 +5,8 @@ namespace BeyondEarthApp.Web.Api.Models.Precis
 {
     public class UnitPrecis
     {
+        public long UnitId { get; set; }
+
         public string Name { get; set; }
 
         public int Cost { get; set; }

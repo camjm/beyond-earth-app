@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BeyondEarthApp.Data.QueryProcessors
+﻿namespace BeyondEarthApp.Data.QueryProcessors
 {
-    interface IDeleteUnitQueryProcessor
+    public interface IDeleteUnitQueryProcessor
     {
+        void DeleteUnit(long unitId);
     }
 }

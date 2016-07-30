@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BeyondEarthApp.Web.Api.Models;
 
 namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
 {
-    interface IUpdateBuildingMaintenanceProcessor
+    public interface IUpdateBuildingMaintenanceProcessor
     {
+        Building UpdateBuilding(long buildingId, object buildingFragment);
     }
 }

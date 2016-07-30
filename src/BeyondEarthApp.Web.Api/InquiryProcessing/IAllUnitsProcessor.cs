@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BeyondEarthApp.Data;
+using BeyondEarthApp.Web.Api.Models.Paging;
+using BeyondEarthApp.Web.Api.Models.Precis;
 
 namespace BeyondEarthApp.Web.Api.InquiryProcessing
 {
     interface IAllUnitsProcessor
     {
+        PagedDataInquiryResponse<UnitPrecis> GetUnits(PagedDataRequest requestInfo);
     }
 }

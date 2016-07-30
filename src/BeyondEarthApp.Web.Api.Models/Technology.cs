@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BeyondEarthApp.Web.Api.Models.Precis;
+using System.Collections.Generic;
 
 namespace BeyondEarthApp.Web.Api.Models
 {
@@ -10,9 +11,9 @@ namespace BeyondEarthApp.Web.Api.Models
 
         public int Cost { get; set; }
 
-        public List<Building> Buildings { get; set; }
+        public List<BuildingPrecis> Buildings { get; set; }
 
-        public List<Unit> Units { get; set; }
+        public List<UnitPrecis> Units { get; set; }
 
         public List<TechnologyAffinity> TechnologyAffinities { get; set; }
 

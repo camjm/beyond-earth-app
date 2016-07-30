@@ -69,8 +69,10 @@
     <Compile Include="QueryProcessors\IGameByIdQueryProcessor.cs" />
     <Compile Include="QueryProcessors\ITechnologyByIdQueryProcessor.cs" />
     <Compile Include="QueryProcessors\IUnitByIdQueryProcessor.cs" />
+    <Compile Include="QueryProcessors\IUpdateBuildingQueryProcessor.cs" />
     <Compile Include="QueryProcessors\IUpdateGameQueryProcessor.cs" />
     <Compile Include="QueryProcessors\IUpdateGameStatusQueryProcessor.cs" />
+    <Compile Include="QueryProcessors\IUpdateUnitQueryProcessor.cs" />
     <Compile Include="QueryResult.cs" />
     <Compile Include="ResultsPagingUtility.cs" />
   </ItemGroup>

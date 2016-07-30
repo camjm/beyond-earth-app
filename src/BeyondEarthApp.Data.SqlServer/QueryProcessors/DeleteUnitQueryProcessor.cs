@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BeyondEarthApp.Data.Entities;
+using BeyondEarthApp.Data.QueryProcessors;
+using NHibernate;
 
 namespace BeyondEarthApp.Data.SqlServer.QueryProcessors
 {
-    class DeleteUnitQueryProcessor
+    public class DeleteUnitQueryProcessor : IDeleteUnitQueryProcessor
     {
+        private readonly ISession _session;
+
+        public DeleteUnitQueryProcessor(ISession session)
+        {
+            _session = session;
+        }
+
+        public void DeleteUnit(long unitId)
+        {
+            var unit = _session.Get<Unit>(unitId);
+            if (unit != null)
+            {
+                _session.Delete(unit);
+            }
+        }
     }
 }

@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BeyondEarthApp.Data.Entities;
+using BeyondEarthApp.Data.QueryProcessors;
+using NHibernate;
 
 namespace BeyondEarthApp.Data.SqlServer.QueryProcessors
 {
-    class UnitByIdQueryProcessor
+    public class UnitByIdQueryProcessor : IUnitByIdQueryProcessor
     {
+        private readonly ISession _session;
+
+        public UnitByIdQueryProcessor(ISession session)
+        {
+            _session = session;
+        }
+
+        public Unit GetUnit(long unitId)
+        {
+            var unit = _session.Get<Unit>(unitId);
+            return unit;
+        }
     }
 }

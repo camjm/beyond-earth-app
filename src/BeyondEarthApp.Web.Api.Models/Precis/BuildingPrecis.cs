@@ -5,6 +5,8 @@ namespace BeyondEarthApp.Web.Api.Models.Precis
 {
     public class BuildingPrecis
     {
+        public long BuildingId { get; set; }
+
         public string Name { get; set; }
 
         public int Cost { get; set; }

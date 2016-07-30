@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BeyondEarthApp.Web.Api.Models;
 
 namespace BeyondEarthApp.Web.Api.InquiryProcessing
 {
-    interface IBuildingByIdProcessor
+    public interface IBuildingByIdProcessor
     {
+        Building GetBuilding(long buildingId);
     }
 }
