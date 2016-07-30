@@ -4,7 +4,7 @@ using BeyondEarthApp.Web.Api.Models.Precis;
 
 namespace BeyondEarthApp.Web.Api.InquiryProcessing
 {
-    interface IAllUnitsProcessor
+    public interface IAllUnitsProcessor
     {
         PagedDataInquiryResponse<UnitPrecis> GetUnits(PagedDataRequest requestInfo);
     }

@@ -4,7 +4,7 @@ using BeyondEarthApp.Web.Api.Models.Precis;
 
 namespace BeyondEarthApp.Web.Api.InquiryProcessing
 {
-    interface IAllBuildingsProcessor
+    public interface IAllBuildingsProcessor
     {
         PagedDataInquiryResponse<BuildingPrecis> GetBuildings(PagedDataRequest requestInfo);
     }
