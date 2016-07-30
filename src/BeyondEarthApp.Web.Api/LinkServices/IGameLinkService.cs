@@ -1,4 +1,5 @@
 ﻿using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Precis;
 
 namespace BeyondEarthApp.Web.Api.LinkServices
 {
@@ -6,7 +7,7 @@ namespace BeyondEarthApp.Web.Api.LinkServices
     {
         void AddLinks(Game game);
 
-        void AddSelfLink(Game game);
+        void AddSelfLink(GamePrecis game);
 
         void AddLinksToChildren(Game game);
 

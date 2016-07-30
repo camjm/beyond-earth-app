@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -123,6 +124,7 @@
     <Compile Include="AutoMappingConfiguration\EntityToService\GameConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\StatusConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\UserConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\Precis\GameConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\GameTechnologyResolver.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\ListValueResolver.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\TechnologyAffinitiesResolver.cs" />

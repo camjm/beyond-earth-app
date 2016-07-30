@@ -4,8 +4,8 @@ using BeyondEarthApp.Common.TypeMapping;
 using BeyondEarthApp.Data;
 using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Web.Api.LinkServices;
-using BeyondEarthApp.Web.Api.Models;
 using BeyondEarthApp.Web.Api.Models.Paging;
+using BeyondEarthApp.Web.Api.Models.Precis;
 
 namespace BeyondEarthApp.Web.Api.InquiryProcessing
 {
@@ -31,13 +31,13 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
             _gameLinkService = gameLinkService;
         }
 
-        public PagedDataInquiryResponse<Game> GetGames(PagedDataRequest requestInfo)
+        public PagedDataInquiryResponse<GamePrecis> GetGames(PagedDataRequest requestInfo)
         {
             var queryResult = _queryProcessor.GetGames(requestInfo);
 
             var games = GetGames(queryResult.QueriedItems).ToList();
 
-            var inquiryResponse = new PagedDataInquiryResponse<Game>
+            var inquiryResponse = new PagedDataInquiryResponse<GamePrecis>
             {
                 Items = games,
                 PageCount = queryResult.TotalPageCount,
@@ -57,22 +57,22 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
         /// <summary>
         /// Adds Links at the Root (page) level, the Game level, and the Child level (Faction and Technologies)
         /// </summary>
-        public virtual void AddLinksToInquiryResponse(PagedDataInquiryResponse<Game> inquiryResponse)
+        public virtual void AddLinksToInquiryResponse(PagedDataInquiryResponse<GamePrecis> inquiryResponse)
         {
             inquiryResponse.AddLink(_gameLinkService.GetAllGamesLink());
 
             _commonLinkService.AddPageLinks(inquiryResponse);
         }
 
-        public virtual IEnumerable<Game> GetGames(IEnumerable<Data.Entities.Game> gameEntities)
+        public virtual IEnumerable<GamePrecis> GetGames(IEnumerable<Data.Entities.Game> gameEntities)
         {
-            var games = gameEntities.Select(x => _autoMapper.Map<Game>(x)).ToList();
+            var games = gameEntities.Select(x => _autoMapper.Map<GamePrecis>(x)).ToList();
 
             // add the self links and the children self links to the game service model
             games.ForEach(x =>
             {
                 _gameLinkService.AddSelfLink(x);
-                _gameLinkService.AddLinksToChildren(x);
+                //_gameLinkService.AddLinksToChildren(x);
             });
 
             return games;

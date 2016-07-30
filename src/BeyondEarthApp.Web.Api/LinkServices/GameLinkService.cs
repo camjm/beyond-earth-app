@@ -2,6 +2,7 @@
 using System.Net.Http;
 using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Precis;
 
 namespace BeyondEarthApp.Web.Api.LinkServices
 {
@@ -28,7 +29,7 @@ namespace BeyondEarthApp.Web.Api.LinkServices
 
         public void AddLinks(Game game)
         {
-            AddSelfLink(game);
+            //AddSelfLink(game);
             AddAllGamesLink(game);
             AddGameTechnologiesLink(game);
             AddAllStatusesLink(game);
@@ -42,9 +43,9 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             AddLinksToChildren(game);
         }
 
-        public virtual void AddSelfLink(Game game)
+        public virtual void AddSelfLink(GamePrecis game)
         {
-            game.AddLink(GetSelfLink(game.GameId.Value));
+            game.AddLink(GetSelfLink(game.GameId));
         }
 
         public virtual void AddAllGamesLink(Game game)

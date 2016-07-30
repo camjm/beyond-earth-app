@@ -7,6 +7,7 @@ using BeyondEarthApp.Web.Api.MaintenanceProcessing;
 using BeyondEarthApp.Web.Api.Models;
 using BeyondEarthApp.Web.Api.Models.Initial;
 using BeyondEarthApp.Web.Api.Models.Paging;
+using BeyondEarthApp.Web.Api.Models.Precis;
 using BeyondEarthApp.Web.Common;
 using BeyondEarthApp.Web.Common.Routing;
 using BeyondEarthApp.Web.Common.Validation;
@@ -51,7 +52,7 @@ namespace BeyondEarthApp.Web.Api.Controllers.V1
 
         [HttpGet]
         [Route("", Name = "GetGamesRoute")]
-        public PagedDataInquiryResponse<Game> GetGames(HttpRequestMessage requestMessage)
+        public PagedDataInquiryResponse<GamePrecis> GetGames(HttpRequestMessage requestMessage)
         {
             var request = _pagedDataRequestFactory.Create(requestMessage.RequestUri);
             var games = _allGamesProcessor.GetGames(request);
