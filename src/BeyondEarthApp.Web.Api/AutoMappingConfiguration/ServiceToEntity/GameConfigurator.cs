@@ -12,6 +12,7 @@ namespace BeyondEarthApp.Web.Api.AutoMappingConfiguration.ServiceToEntity
                 .ForMember(opts => opts.User, x => x.Ignore())
                 .ForMember(opt => opt.Version, x => x.Ignore());
 
+            // Precis mapping
             mapper.CreateMap<GamePrecis, Data.Entities.Game>()
                 .ForMember(opts => opts.User, x => x.Ignore())
                 .ForMember(opts => opts.CreatedDate, x => x.Ignore())

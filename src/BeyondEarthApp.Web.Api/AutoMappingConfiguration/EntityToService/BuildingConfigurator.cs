@@ -9,6 +9,10 @@ namespace BeyondEarthApp.Web.Api.AutoMappingConfiguration.EntityToService
         {
             mapper.CreateMap<Building, Models.Building>()
                 .ForMember(opt => opt.Links, x => x.Ignore());
+
+            // Precis mapping
+            mapper.CreateMap<Building, Models.Precis.BuildingPrecis>()
+                .ForMember(x => x.Links, opts => opts.Ignore());
         }
     }
 }

@@ -13,6 +13,10 @@ namespace BeyondEarthApp.Web.Api.AutoMappingConfiguration.EntityToService
                 .ForMember(x => x.Units, opt => opt.ResolveUsing<TechnologyUnitsResolver>())
                 .ForMember(x => x.Buildings, opt => opt.ResolveUsing<TechnologyBuildingsResolver>())
                 .ForMember(x => x.TechnologyAffinities, opt => opt.ResolveUsing<TechnologyAffinitiesResolver>());
+
+            // Precis mapping
+            mapper.CreateMap<Technology, Models.Precis.TechnologyPrecis>()
+                .ForMember(x => x.Links, opts => opts.Ignore());
         }
     }
 }

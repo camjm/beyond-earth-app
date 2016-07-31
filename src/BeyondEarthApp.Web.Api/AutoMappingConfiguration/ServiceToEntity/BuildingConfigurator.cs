@@ -11,6 +11,7 @@ namespace BeyondEarthApp.Web.Api.AutoMappingConfiguration.ServiceToEntity
             mapper.CreateMap<Building, Data.Entities.Building>()
                 .ForMember(opt => opt.Version, x => x.Ignore());
 
+            // Precis mapping
             mapper.CreateMap<BuildingPrecis, Data.Entities.Building>()
                 .ForMember(opt => opt.Technology, x => x.Ignore())
                 .ForMember(opt => opt.Version, x => x.Ignore());
