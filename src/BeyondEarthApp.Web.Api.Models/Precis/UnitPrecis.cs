@@ -13,7 +13,7 @@ namespace BeyondEarthApp.Web.Api.Models.Precis
 
         public short Strength { get; set; }
 
-        public string Technology { get; set; }
+        public string TechnologyName { get; set; }
 
         #region Links
 

@@ -11,7 +11,7 @@ namespace BeyondEarthApp.Web.Api.Models.Precis
 
         public int Cost { get; set; }
 
-        public string Technology { get; set; }
+        public string TechnologyName { get; set; }
 
         #region Links
 

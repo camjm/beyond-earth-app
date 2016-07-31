@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BeyondEarthApp.Web.Api.Models.Precis;
+using System.Collections.Generic;
 
 namespace BeyondEarthApp.Web.Api.Models
 {
@@ -12,7 +13,7 @@ namespace BeyondEarthApp.Web.Api.Models
 
         public short Strength { get; set; }
 
-        public Technology Technology { get; set; }
+        public TechnologyPrecis Technology { get; set; }
 
         #region Links
 

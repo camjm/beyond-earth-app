@@ -263,6 +263,9 @@ namespace BeyondEarthApp.Web.Api
 
             // Map Entity to Precis Service
             MapConfigurator<Precis.GameConfigurator>(container);
+            MapConfigurator<Precis.UnitConfigurator>(container);
+            MapConfigurator<Precis.BuildingConfigurator>(container);
+            MapConfigurator<Precis.TechnologyConfigurator>(container);
         }
 
         private void MapConfigurator<T>(IKernel container) where T : IAutoMapperTypeConfigurator

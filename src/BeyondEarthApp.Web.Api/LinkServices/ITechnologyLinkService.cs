@@ -1,4 +1,5 @@
 ﻿using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Precis;
 
 namespace BeyondEarthApp.Web.Api.LinkServices
 {
@@ -6,7 +7,7 @@ namespace BeyondEarthApp.Web.Api.LinkServices
     {
         void AddLinks(Technology technology);
 
-        void AddSelfLink(Technology technology);
+        void AddSelfLink(TechnologyPrecis technology);
 
         void AddLinksToChildren(Technology technology);
 

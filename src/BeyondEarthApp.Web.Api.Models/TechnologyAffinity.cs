@@ -1,8 +1,10 @@
-﻿namespace BeyondEarthApp.Web.Api.Models
+﻿using BeyondEarthApp.Web.Api.Models.Precis;
+
+namespace BeyondEarthApp.Web.Api.Models
 {
     public class TechnologyAffinity
     {
-        public Technology Technology { get; set; }
+        public TechnologyPrecis Technology { get; set; }
 
         public Affinity Affinity { get; set; }
 

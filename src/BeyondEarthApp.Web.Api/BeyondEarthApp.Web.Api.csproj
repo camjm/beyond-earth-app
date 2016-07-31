@@ -132,7 +132,10 @@
     <Compile Include="AutoMappingConfiguration\EntityToService\GameConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\StatusConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\EntityToService\UserConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\Precis\BuildingConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\Precis\GameConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\Precis\TechnologyConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\Precis\UnitConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\GameTechnologyResolver.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\ListValueResolver.cs" />
     <Compile Include="AutoMappingConfiguration\Resolvers\TechnologyAffinitiesResolver.cs" />

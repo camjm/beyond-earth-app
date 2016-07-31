@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeyondEarthApp.Web.Api.Models.Precis;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -31,7 +32,7 @@ namespace BeyondEarthApp.Web.Api.Models
         public Faction Faction { get; set; }
 
         [Editable(false)] // modify Technologies via the relationship API
-        public List<Technology> Technologies { get; set; }
+        public List<TechnologyPrecis> Technologies { get; set; }
 
         #region Serialization
 

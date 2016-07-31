@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.Models.Precis;
 
 namespace BeyondEarthApp.Web.Api.LinkServices
 {
@@ -24,14 +25,14 @@ namespace BeyondEarthApp.Web.Api.LinkServices
 
         public void AddLinks(Technology technology)
         {
-            AddSelfLink(technology);
+            //AddSelfLink(technology);
             AddAllTechnologiesLink(technology);
             AddTechnologyUnitsLink(technology);
             AddTechnologyBuildingsLink(technology);
             AddLinksToChildren(technology);
         }
 
-        public virtual void AddSelfLink(Technology technology)
+        public virtual void AddSelfLink(TechnologyPrecis technology)
         {
             technology.AddLink(GetSelfLink(technology.TechnologyId));
         }
