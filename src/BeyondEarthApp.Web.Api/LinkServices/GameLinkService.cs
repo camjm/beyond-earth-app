@@ -2,7 +2,7 @@
 using System.Net.Http;
 using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.Models;
-using BeyondEarthApp.Web.Api.Models.Precis;
+using BeyondEarthApp.Web.Api.LinkServices.Precis;
 
 namespace BeyondEarthApp.Web.Api.LinkServices
 {
@@ -13,17 +13,20 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         private readonly ICommonLinkService _commonLinkService;
         private readonly IStatusLinkService _statusLinkService;
         private readonly IFactionLinkService _factionLinkService;
-        private readonly ITechnologyLinkService _technologyLinkService;
+        private readonly IGamePrecisLinkService _gamePrecisLinkService;
+        private readonly ITechnologyPrecisLinkService _technologyLinkService;
 
         public GameLinkService(
             ICommonLinkService commonLinkService, 
             IStatusLinkService statusLinkService,
-            IFactionLinkService factionLinkService, 
-            ITechnologyLinkService technologyLinkService)
+            IFactionLinkService factionLinkService,
+            IGamePrecisLinkService gamePrecisLinkService,
+            ITechnologyPrecisLinkService technologyLinkService)
         {
             _commonLinkService = commonLinkService;
             _statusLinkService = statusLinkService;
             _factionLinkService = factionLinkService;
+            _gamePrecisLinkService = gamePrecisLinkService;
             _technologyLinkService = technologyLinkService;
         }
 
@@ -42,15 +45,11 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             AddWorkflowLink(game);
             AddLinksToChildren(game);
         }
-
-        public virtual void AddSelfLink(GamePrecis game)
-        {
-            game.AddLink(GetSelfLink(game.GameId));
-        }
-
+        
         public virtual void AddAllGamesLink(Game game)
         {
-            game.AddLink(GetAllGamesLink());
+            var link = _gamePrecisLinkService.GetAllGamesLink();
+            game.AddLink(link);
         }
 
         public virtual void AddGameTechnologiesLink(Game game)
@@ -141,23 +140,6 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         {
             _factionLinkService.AddSelfLink(game.Faction);
             game.Technologies.ForEach(x => _technologyLinkService.AddSelfLink(x));
-        }
-
-        public virtual Link GetSelfLink(long gameId)
-        {
-            var pathFragment = string.Format("{0}/{1}", PathFragmentBase, gameId);
-            return _commonLinkService.GetLink(
-                pathFragment, 
-                Constants.CommonLinkRelValues.Self, 
-                HttpMethod.Get);
-        }
-
-        public virtual Link GetAllGamesLink()
-        {
-            return _commonLinkService.GetLink(
-                PathFragmentBase,
-                Constants.CommonLinkRelValues.All,
-                HttpMethod.Get);
         }
     }
 }

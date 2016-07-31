@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web;
+﻿using System.Net.Http;
 using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.Models;
+using BeyondEarthApp.Web.Api.LinkServices.Precis;
 
 namespace BeyondEarthApp.Web.Api.LinkServices
 {
@@ -13,11 +10,11 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         private const string PathFragmentBase = "affinities";
 
         private readonly ICommonLinkService _commonLinkService;
-        private readonly ITechnologyLinkService _technologyLinkService;
+        private readonly ITechnologyPrecisLinkService _technologyLinkService;
 
         public AffinityLinkService(
-            ICommonLinkService commonLinkService, 
-            ITechnologyLinkService technologyLinkService)
+            ICommonLinkService commonLinkService,
+            ITechnologyPrecisLinkService technologyLinkService)
         {
             _commonLinkService = commonLinkService;
             _technologyLinkService = technologyLinkService;

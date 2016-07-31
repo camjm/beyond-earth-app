@@ -189,6 +189,14 @@
     <Compile Include="LinkServices\IStatusLinkService.cs" />
     <Compile Include="LinkServices\ITechnologyLinkService.cs" />
     <Compile Include="LinkServices\IUnitLinkService.cs" />
+    <Compile Include="LinkServices\Precis\BuildingPrecisLinkService.cs" />
+    <Compile Include="LinkServices\Precis\GamePrecisLinkService.cs" />
+    <Compile Include="LinkServices\Precis\IBuildingPrecisLinkService.cs" />
+    <Compile Include="LinkServices\Precis\IGamePrecisLinkService.cs" />
+    <Compile Include="LinkServices\Precis\ITechnologyPrecisLinkService.cs" />
+    <Compile Include="LinkServices\Precis\IUnitPrecisLinkService.cs" />
+    <Compile Include="LinkServices\Precis\TechnologyPrecisLinkService.cs" />
+    <Compile Include="LinkServices\Precis\UnitPrecisLinkService.cs" />
     <Compile Include="LinkServices\StatusLinkService.cs" />
     <Compile Include="LinkServices\TechnologyLinkService.cs" />
     <Compile Include="LinkServices\UnitLinkService.cs" />

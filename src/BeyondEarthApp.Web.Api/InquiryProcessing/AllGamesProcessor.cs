@@ -6,6 +6,7 @@ using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Web.Api.LinkServices;
 using BeyondEarthApp.Web.Api.Models.Paging;
 using BeyondEarthApp.Web.Api.Models.Precis;
+using BeyondEarthApp.Web.Api.LinkServices.Precis;
 
 namespace BeyondEarthApp.Web.Api.InquiryProcessing
 {
@@ -17,13 +18,13 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
         private readonly IAutoMapper _autoMapper;
         private readonly ICommonLinkService _commonLinkService;
         private readonly IAllGamesQueryProcessor _queryProcessor;
-        private readonly IGameLinkService _gameLinkService;
+        private readonly IGamePrecisLinkService _gameLinkService;
 
         public AllGamesProcessor(
             IAutoMapper autoMapper, 
             ICommonLinkService commonLinkService, 
-            IAllGamesQueryProcessor queryProcessor, 
-            IGameLinkService gameLinkService)
+            IAllGamesQueryProcessor queryProcessor,
+            IGamePrecisLinkService gameLinkService)
         {
             _autoMapper = autoMapper;
             _commonLinkService = commonLinkService;

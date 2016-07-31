@@ -1,7 +1,6 @@
 ﻿using System.Net.Http;
-using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.Models;
-using BeyondEarthApp.Web.Api.Models.Precis;
+using BeyondEarthApp.Web.Api.LinkServices.Precis;
 
 namespace BeyondEarthApp.Web.Api.LinkServices
 {
@@ -10,14 +9,17 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         private const string PathFragmentBase = "buildings";
 
         private readonly ICommonLinkService _commonLinkService;
-        private readonly ITechnologyLinkService _technologyLinkService;
+        private readonly IBuildingPrecisLinkService _buildingPrecisLinkService;
+        private readonly ITechnologyPrecisLinkService _technologyPrecisLinkService;
 
         public BuildingLinkService(
             ICommonLinkService commonLinkService,
-            ITechnologyLinkService technologyLinkService)
+            IBuildingPrecisLinkService buildingPrecisLinkService,
+            ITechnologyPrecisLinkService technologyPrecisLinkService)
         {
             _commonLinkService = commonLinkService;
-            _technologyLinkService = technologyLinkService;
+            _buildingPrecisLinkService = buildingPrecisLinkService;
+            _technologyPrecisLinkService = technologyPrecisLinkService;
         }
 
         public void AddLinks(Building building)
@@ -31,7 +33,8 @@ namespace BeyondEarthApp.Web.Api.LinkServices
 
         public virtual void AddAllBuildingsLink(Building building)
         {
-            building.AddLink(GetAllBuildingsLink());
+            var link = _buildingPrecisLinkService.GetAllBuildingsLink();
+            building.AddLink(link);
         }
 
         public virtual void AddUpdateBuildingLink(Building building)
@@ -53,35 +56,10 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             var link = _commonLinkService.GetLink(PathFragmentBase, "createBuilding", HttpMethod.Post);
             building.AddLink(link);
         }
-
-        public virtual void AddSelfLink(BuildingPrecis building)
-        {
-            building.AddLink(GetSelfLink(building.BuildingId));
-        }
-
+        
         public virtual void AddLinksToChildren(Building building)
         {
-            _technologyLinkService.AddSelfLink(building.Technology);
-        }
-
-        public virtual Link GetSelfLink(long buildingId)
-        {
-            var pathFragment = string.Format("{0}/{1}", PathFragmentBase, buildingId);
-
-            var link = _commonLinkService.GetLink(
-                pathFragment,
-                Constants.CommonLinkRelValues.Self,
-                HttpMethod.Get);
-
-            return link;
-        }
-
-        public virtual Link GetAllBuildingsLink()
-        {
-            return _commonLinkService.GetLink(
-                PathFragmentBase,
-                Constants.CommonLinkRelValues.All,
-                HttpMethod.Get);
+            _technologyPrecisLinkService.AddSelfLink(building.Technology);
         }
     }
 }

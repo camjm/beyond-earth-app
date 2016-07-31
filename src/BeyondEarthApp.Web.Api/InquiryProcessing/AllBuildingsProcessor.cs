@@ -6,6 +6,7 @@ using BeyondEarthApp.Data.QueryProcessors;
 using BeyondEarthApp.Web.Api.LinkServices;
 using BeyondEarthApp.Web.Api.Models.Paging;
 using BeyondEarthApp.Web.Api.Models.Precis;
+using BeyondEarthApp.Web.Api.LinkServices.Precis;
 
 namespace BeyondEarthApp.Web.Api.InquiryProcessing
 {
@@ -14,13 +15,13 @@ namespace BeyondEarthApp.Web.Api.InquiryProcessing
         private readonly IAutoMapper _autoMapper;
         private readonly ICommonLinkService _commonLinkService;
         private readonly IAllBuildingsQueryProcessor _queryProcessor;
-        private readonly IBuildingLinkService _buildingLinkService;
+        private readonly IBuildingPrecisLinkService _buildingLinkService;
 
         public AllBuildingsProcessor(
             IAutoMapper autoMapper,
             ICommonLinkService commonLinkService,
             IAllBuildingsQueryProcessor queryProcessor,
-            IBuildingLinkService buildingLinkService)
+            IBuildingPrecisLinkService buildingLinkService)
         {
             _autoMapper = autoMapper;
             _commonLinkService = commonLinkService;

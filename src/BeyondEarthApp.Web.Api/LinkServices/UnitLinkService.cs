@@ -1,7 +1,6 @@
 ﻿using System.Net.Http;
-using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.Models;
-using BeyondEarthApp.Web.Api.Models.Precis;
+using BeyondEarthApp.Web.Api.LinkServices.Precis;
 
 namespace BeyondEarthApp.Web.Api.LinkServices
 {
@@ -10,13 +9,16 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         private const string PathFragmentBase = "units";
 
         private readonly ICommonLinkService _commonLinkService;
-        private readonly ITechnologyLinkService _technologyLinkService;
+        private readonly IUnitPrecisLinkService _unitPrecisLinkService;
+        private readonly ITechnologyPrecisLinkService _technologyLinkService;
 
         public UnitLinkService(
             ICommonLinkService commonLinkService,
-            ITechnologyLinkService technologyLinkService)
+            IUnitPrecisLinkService unitPrecisLinkService,
+            ITechnologyPrecisLinkService technologyLinkService)
         {
             _commonLinkService = commonLinkService;
+            _unitPrecisLinkService = unitPrecisLinkService;
             _technologyLinkService = technologyLinkService;
         }
 
@@ -31,7 +33,8 @@ namespace BeyondEarthApp.Web.Api.LinkServices
 
         public virtual void AddAllUnitsLink(Unit unit)
         {
-            unit.AddLink(GetAllUnitsLink());
+            var link = _unitPrecisLinkService.GetAllUnitsLink();
+            unit.AddLink(link);
         }
 
         public virtual void AddUpdateUnitLink(Unit unit)
@@ -53,35 +56,10 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             var link = _commonLinkService.GetLink(PathFragmentBase, "createUnit", HttpMethod.Post);
             unit.AddLink(link);
         }
-
-        public virtual void AddSelfLink(UnitPrecis unit)
-        {
-            unit.AddLink(GetSelfLink(unit.UnitId));
-        }
-
+        
         public virtual void AddLinksToChildren(Unit unit)
         {
             _technologyLinkService.AddSelfLink(unit.Technology);
-        }
-        
-        public virtual Link GetSelfLink(long unitId)
-        {
-            var pathFragment = string.Format("{0}/{1}", PathFragmentBase, unitId);
-
-            var link = _commonLinkService.GetLink(
-                pathFragment,
-                Constants.CommonLinkRelValues.Self,
-                HttpMethod.Get);
-
-            return link;
-        }
-
-        public virtual Link GetAllUnitsLink()
-        {
-            return _commonLinkService.GetLink(
-                PathFragmentBase,
-                Constants.CommonLinkRelValues.All,
-                HttpMethod.Get);
         }
     }
 }

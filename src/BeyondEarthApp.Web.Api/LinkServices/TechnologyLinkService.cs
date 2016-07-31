@@ -1,7 +1,6 @@
 ﻿using System.Net.Http;
-using BeyondEarthApp.Common;
 using BeyondEarthApp.Web.Api.Models;
-using BeyondEarthApp.Web.Api.Models.Precis;
+using BeyondEarthApp.Web.Api.LinkServices.Precis;
 
 namespace BeyondEarthApp.Web.Api.LinkServices
 {
@@ -10,17 +9,20 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         private const string PathFragmentBase = "technologies";
 
         private readonly ICommonLinkService _commonLinkService;
-        private readonly IBuildingLinkService _buildingLinkService;
-        private readonly IUnitLinkService _unitLinkService;
+        private readonly IUnitPrecisLinkService _unitLinkService;
+        private readonly IBuildingPrecisLinkService _buildingLinkService;
+        private readonly ITechnologyPrecisLinkService _technologyLinkService;
 
         public TechnologyLinkService(
-            ICommonLinkService commonLinkService, 
-            IBuildingLinkService buildingLinkService, 
-            IUnitLinkService unitLinkService)
+            ICommonLinkService commonLinkService,
+            IUnitPrecisLinkService unitLinkService,
+            IBuildingPrecisLinkService buildingLinkService,
+            ITechnologyPrecisLinkService technologyLinkService)
         {
             _commonLinkService = commonLinkService;
-            _buildingLinkService = buildingLinkService;
             _unitLinkService = unitLinkService;
+            _buildingLinkService = buildingLinkService;
+            _technologyLinkService = technologyLinkService;
         }
 
         public void AddLinks(Technology technology)
@@ -31,15 +33,11 @@ namespace BeyondEarthApp.Web.Api.LinkServices
             AddTechnologyBuildingsLink(technology);
             AddLinksToChildren(technology);
         }
-
-        public virtual void AddSelfLink(TechnologyPrecis technology)
-        {
-            technology.AddLink(GetSelfLink(technology.TechnologyId));
-        }
-
+        
         public virtual void AddAllTechnologiesLink(Technology technology)
         {
-            technology.AddLink(GetAllTechnologiesLink());
+            var link = _technologyLinkService.GetAllTechnologiesLink();
+            technology.AddLink(link);
         }
 
         public virtual void AddTechnologyUnitsLink(Technology technology)
@@ -60,23 +58,6 @@ namespace BeyondEarthApp.Web.Api.LinkServices
         {
             technology.Units.ForEach(x => _unitLinkService.AddSelfLink(x));
             technology.Buildings.ForEach(x => _buildingLinkService.AddSelfLink(x));
-        }
-
-        public virtual Link GetSelfLink(long technologyId)
-        {
-            var pathFragment = string.Format("{0}/{1}", PathFragmentBase, technologyId);
-            return _commonLinkService.GetLink(
-                pathFragment,
-                Constants.CommonLinkRelValues.Self,
-                HttpMethod.Get);
-        }
-
-        public virtual Link GetAllTechnologiesLink()
-        {
-            return _commonLinkService.GetLink(
-                PathFragmentBase,
-                Constants.CommonLinkRelValues.All,
-                HttpMethod.Get);
         }
     }
 }
