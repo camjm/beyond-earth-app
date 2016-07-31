@@ -7,6 +7,7 @@ using BeyondEarthApp.Data.SqlServer.Mapping;
 using BeyondEarthApp.Data.SqlServer.QueryProcessors;
 using BeyondEarthApp.Web.Api.InquiryProcessing;
 using BeyondEarthApp.Web.Api.LinkServices;
+using BeyondEarthApp.Web.Api.LinkServices.Precis;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing;
 using BeyondEarthApp.Web.Api.MaintenanceProcessing.Workflow;
 using BeyondEarthApp.Web.Api.Security;
@@ -83,6 +84,16 @@ namespace BeyondEarthApp.Web.Api
                 .To<AddGameQueryProcessor>()
                 .InRequestScope();
 
+            container
+                .Bind<IAddUnitQueryProcessor>()
+                .To<AddUnitQueryProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IAddBuildingQueryProcessor>()
+                .To<AddBuildingQueryProcessor>()
+                .InRequestScope();
+
             // Get
             container
                 .Bind<IGameByIdQueryProcessor>()
@@ -94,6 +105,15 @@ namespace BeyondEarthApp.Web.Api
                 .To<TechnologyByIdQueryProcessor>()
                 .InRequestScope();
 
+            container
+                .Bind<IUnitByIdQueryProcessor>()
+                .To<UnitByIdQueryProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IBuildingByIdQueryProcessor>()
+                .To<BuildingByIdQueryProcessor>()
+                .InRequestScope();
 
             // Update
             container
@@ -106,10 +126,30 @@ namespace BeyondEarthApp.Web.Api
                 .To<UpdateGameQueryProcessor>()
                 .InRequestScope();
 
+            container
+                .Bind<IUpdateUnitQueryProcessor>()
+                .To<UpdateUnitQueryProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IUpdateBuildingQueryProcessor>()
+                .To<UpdateBuildingQueryProcessor>()
+                .InRequestScope();
+
             // Delete
             container
                 .Bind<IDeleteGameQueryProcessor>()
                 .To<DeleteGameQueryProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IDeleteUnitQueryProcessor>()
+                .To<DeleteUnitQueryProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IDeleteBuildingQueryProcessor>()
+                .To<DeleteBuildingQueryProcessor>()
                 .InRequestScope();
 
             // All
@@ -121,6 +161,16 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<IAllStatusesQueryProcessor>()
                 .To<AllStatusesQueryProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IAllUnitsQueryProcessor>()
+                .To<AllUnitsQueryProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IAllBuildingsQueryProcessor>()
+                .To<AllBuildingsQueryProcessor>()
                 .InRequestScope();
         }
 
@@ -137,6 +187,16 @@ namespace BeyondEarthApp.Web.Api
                 .To<AddGameMaintenanceProcessor>()
                 .InRequestScope();
 
+            container
+                .Bind<IAddUnitMaintenanceProcessor>()
+                .To<AddUnitMaintenanceProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IAddBuildingMaintenanceProcessor>()
+                .To<AddBuildingMaintenanceProcessor>()
+                .InRequestScope();
+
             // Update
             container
                 .Bind<IGameTechnologiesMaintenceProcessor>()
@@ -146,6 +206,16 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<IUpdateGameMaintenanceProcessor>()
                 .To<UpdateGameMaintenanceProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IUpdateUnitMaintenanceProcessor>()
+                .To<UpdateUnitMaintenanceProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IUpdateBuildingMaintenanceProcessor>()
+                .To<UpdateBuildingMaintenanceProcessor>()
                 .InRequestScope();
 
             // Workflow
@@ -178,6 +248,17 @@ namespace BeyondEarthApp.Web.Api
                 .To<TechnologyByIdProcessor>()
                 .InRequestScope();
 
+            container
+                .Bind<IUnitByIdProcessor>()
+                .To<UnitByIdProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IBuildingByIdProcessor>()
+                .To<BuildingByIdProcessor>()
+                .InRequestScope();
+
+
             // All
             container
                 .Bind<IAllGamesProcessor>()
@@ -187,6 +268,16 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<IAllStatusesProcessor>()
                 .To<AllStatusesProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IAllUnitsProcessor>()
+                .To<AllUnitsProcessor>()
+                .InRequestScope();
+
+            container
+                .Bind<IAllBuildingsProcessor>()
+                .To<AllBuildingsProcessor>()
                 .InRequestScope();
         }
 
@@ -230,6 +321,27 @@ namespace BeyondEarthApp.Web.Api
             container
                 .Bind<IStatusLinkService>()
                 .To<StatusLinkService>()
+                .InRequestScope();
+
+            // Precis Link Services
+            container
+                .Bind<IGamePrecisLinkService>()
+                .To<GamePrecisLinkService>()
+                .InRequestScope();
+
+            container
+                .Bind<ITechnologyPrecisLinkService>()
+                .To<TechnologyPrecisLinkService>()
+                .InRequestScope();
+
+            container
+                .Bind<IBuildingPrecisLinkService>()
+                .To<BuildingPrecisLinkService>()
+                .InRequestScope();
+
+            container
+                .Bind<IUnitPrecisLinkService>()
+                .To<UnitPrecisLinkService>()
                 .InRequestScope();
         }
 
