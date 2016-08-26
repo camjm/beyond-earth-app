@@ -20,7 +20,7 @@ namespace BeyondEarthApp.Data.SqlServer.QueryProcessors
         {
             var unit = GetValidUnit(unitId);
 
-            var propertyInfos = typeof(Game).GetProperties();
+            var propertyInfos = typeof(Unit).GetProperties();
 
             foreach (var propertyValuePair in updatedPropertyValueMap)
             {
