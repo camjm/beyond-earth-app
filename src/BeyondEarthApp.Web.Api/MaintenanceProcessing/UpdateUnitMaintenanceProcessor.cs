@@ -37,9 +37,10 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
 
             // parse unit fragment into actual Unit instance
             var unitContainingUpdateData = unitFragmentAsJObject.ToObject<Unit>();
+            var entityContainingUpdateData = _autoMapper.Map<Data.Entities.Unit>(unitContainingUpdateData);
 
             // compute the Property Value Map
-            var updatedPropertyValueMap = GetPropertyValueMap(unitFragmentAsJObject, unitContainingUpdateData);
+            var updatedPropertyValueMap = GetPropertyValueMap(unitFragmentAsJObject, entityContainingUpdateData);
 
             // update the Unit and persist the changes
             var updatedUnitEntity = _queryProcessor.GetUpdatedUnit(unitId, updatedPropertyValueMap);
@@ -55,21 +56,21 @@ namespace BeyondEarthApp.Web.Api.MaintenanceProcessing
         /// <summary>
         /// Creates the PropertyValueMap instance and populates it with the new values.
         /// </summary>
-        public virtual PropertyValueMapType GetPropertyValueMap(JObject unitFragment, Unit unitContainingUpdateData)
+        public virtual PropertyValueMapType GetPropertyValueMap(JObject unitFragment, Data.Entities.Unit entityContainingUpdateData)
         {
             // detirmine the names of the properties that need to be updated
             var namesOfModifiedProperties = _updateablePropertyDetector
                 .GetNamesOfPropertiesToUpdate<Unit>(unitFragment)
                 .ToList();
 
-            var propertyInfos = typeof(Unit).GetProperties();
+            var propertyInfos = typeof(Data.Entities.Unit).GetProperties();
 
             var updatedPropertyValueMap = new PropertyValueMapType();
 
             // for each of these properties get the corresponding value and add it to the map
             foreach (var propertyName in namesOfModifiedProperties)
             {
-                var propertyValue = propertyInfos.Single(x => x.Name == propertyName).GetValue(unitContainingUpdateData);
+                var propertyValue = propertyInfos.Single(x => x.Name == propertyName).GetValue(entityContainingUpdateData);
                 updatedPropertyValueMap.Add(propertyName, propertyValue);
             }
 

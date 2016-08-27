@@ -18,7 +18,7 @@ namespace BeyondEarthApp.Web.Api.Models
         [Editable(true)]
         public short Strength { get; set; }
 
-        [Editable(false)]
+        [Editable(true)]
         public TechnologyPrecis Technology { get; set; }
 
         #region Links
