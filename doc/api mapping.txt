@@ -1,0 +1,12 @@
+Task            Game
+Task.Status     Game.Status, Game.Faction
+Task.Users      Game.Technologies
+Task.CreatedBy  Game.User
+
+
+Search for ITaskLinkService in the WebApi2Book repository on GitHub, and update
+all the corresponding places in BeyondEarthApp that use IGameLinkService.
+e.g.
+  AddGameMaintenanceProcessor
+  GameByIdInquiryProcessor
+  etc...
